@@ -24,12 +24,12 @@
   <div class="container">
     <h5 class="text-center mb-5">Tips Budidaya</h5>
     <div class="row">
-      <?php foreach ($kategori as $key => $value) : ?>
+      <?php foreach ($tips_budidaya as $key => $value) : ?>
       <div class="col-md-4 text-center">
-        <a href="<?= base_url('kategori/' . $value['id_kategori']); ?>" class="text-decoration-none">
-          <img src="<?php echo $this->config->item('url_kategori') . $value['foto_kategori'] ?>"
+        <a href="<?= base_url('tips_budidaya' . $value['id_tips_budidaya']); ?>" class="text-decoration-none">
+          <img src="<?php echo $this->config->item('url_tips_budidaya') . $value['foto_tips_budidaya'] ?>"
             class="w-50 rounded-circle" alt="">
-          <h5 class="mt-3"><?php echo $value['nama_kategori'] ?></h5>
+          <h5 class="mt-3"><?php echo $value['judul_tips_budidaya'] ?></h5>
         </a>
       </div>
       <?php endforeach; ?>
@@ -39,16 +39,15 @@
 
 <section class="bg-light py-5">
   <div class="container">
-    <h5 class="text-center mb-5">Produk Terbaru</h5>
+    <h5 class="text-center mb-5">Layanan Keuangan</h5>
     <div class="row">
-      <?php foreach ($produk as $key => $value) : ?>
+      <?php foreach ($layanan_keuangan as $key => $value) : ?>
       <div class="col-md-3">
-        <a href="<?= base_url('produk/detail/' . $value['id_produk']); ?>" class="text-decoration-none">
+        <a href="<?= base_url('layanan_keuangan' . $value['id_layanan_keuangan']); ?>" class="text-decoration-none">
           <div class="card mb-3 border-0 shadow">
-            <img src="<?php echo $this->config->item('url_produk') . $value['foto_produk'] ?>" alt="">
+            <img src="<?php echo $this->config->item('url_layanan_keuangan') . $value['gambar_layanan_keuangan'] ?>" alt="">
             <div class="card-body text-center">
-              <h6><?php echo $value['nama_produk'] ?></h6>
-              <span>Rp. <?php echo number_format($value['harga_produk']) ?></span>
+              <h6><?php echo $value['judul_layanan_keuangan'] ?></h6>
             </div>
           </div>
         </a>
@@ -56,16 +55,40 @@
       <?php endforeach; ?>
     </div>
   </div>
-</section>
 
-<section class="bg-white py-5">
+</section><section class="bg-light py-5">
   <div class="container">
-    <h5 class="text-center mb-5">Artikel Terbaru</h5>
+    <h5 class="text-center mb-5">Info Pasar</h5>
     <div class="row">
-      <?php foreach ($artikel as $key => $value) : ?>
-      <div class="col-md-3 text-center">
-        <img src="<?php echo $this->config->item('url_artikel') . $value['foto_artikel'] ?>" class="w-100" alt="">
-        <h6 class="mt-3"><?php echo $value['judul_artikel'] ?></h6>
+      <?php foreach ($info_pasar as $key => $value) : ?>
+      <div class="col-md-3">
+        <a href="<?= base_url('info_pasar' . $value['id_info_pasar']); ?>" class="text-decoration-none">
+          <div class="card mb-3 border-0 shadow">
+            <img src="<?php echo $this->config->item('url_info_pasar') . $value['gambar_info_pasar'] ?>" alt="">
+            <div class="card-body text-center">
+              <h6><?php echo $value['judul_info_pasar'] ?></h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+
+</section><section class="bg-light py-5">
+  <div class="container">
+    <h5 class="text-center mb-5">Hama dan Penyakit</h5>
+    <div class="row">
+      <?php foreach ($hama_penyakit as $key => $value) : ?>
+      <div class="col-md-3">
+        <a href="<?= base_url('hama_penyakit' . $value['id_hama_penyakit']); ?>" class="text-decoration-none">
+          <div class="card mb-3 border-0 shadow">
+            <img src="<?php echo $this->config->item('url_hama_penyakit') . $value['gambar_hama_penyakit'] ?>" alt="">
+            <div class="card-body text-center">
+              <h6><?php echo $value['judul_hama_penyakit'] ?></h6>
+            </div>
+          </div>
+        </a>
       </div>
       <?php endforeach; ?>
     </div>

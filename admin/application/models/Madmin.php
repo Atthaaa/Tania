@@ -9,14 +9,6 @@ class Madmin extends CI_Model
     $password = $inputan['password'];
     $password = sha1($password);
 
-    // cek ke database
-    $this->db->where('username', $username);
-    $this->db->where('password', $password);
-    $q = $this->db->get('admin');
-    echo $this->db->last_query(); // Debug untuk melihat query yang dijalankan
-    print_r($q->result_array());  // Debug untuk melihat hasil query
-    $cekadmin = $q->row_array();
-
     // jika tidak kosong maka ada
     if (!empty($cekadmin)) {
       // Membuat tiket bisokop yang dipake selama keliling aplikasi
