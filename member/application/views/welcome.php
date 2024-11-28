@@ -22,7 +22,7 @@
 
 <section class="bg-white py-5">
   <div class="container">
-    <h5 class="text-center mb-5">Kategori Produk</h5>
+    <h5 class="text-center mb-5">Tips Budidaya</h5>
     <div class="row">
       <?php foreach ($kategori as $key => $value) : ?>
       <div class="col-md-4 text-center">
