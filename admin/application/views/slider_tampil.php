@@ -17,7 +17,7 @@
                     <td><?php echo $k + 1; ?></td>
                     <td><?php echo $v['caption_slider']; ?></td>
                     <td>
-                        <img src="<?php echo $this->config->item('url_slider') . $v['foto_slider'] ?>" width="100" height="100">
+                        <img src="<?php echo $this->config->item('url_slider') . $v['foto_slider'] ?>" width="50" height="50">
                     </td>
                     <td>
                         <a href="<?php echo base_url("slider/edit/" . $v["id_slider"]) ?>" class="btn btn-warning">Edit</a>

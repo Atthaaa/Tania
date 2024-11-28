@@ -3,22 +3,32 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Madmin extends CI_Model
 {
-  function login($inputan)
+  public function login($inputan)
   {
+    // Ambil username dan password dari inputan
     $username = $inputan['username'];
-    $password = $inputan['password'];
-    $password = sha1($password);
+    $password = sha1($inputan['password']); // Hash password dengan sha1
 
-    // jika tidak kosong maka ada
+    // Query untuk mengecek data admin di database
+    $this->db->where('username', $username);
+    $this->db->where('password', $password);
+    $query = $this->db->get('admin'); // Ganti 'admin' dengan nama tabel admin Anda
+
+    // Ambil hasil query
+    $cekadmin = $query->row_array();
+
+    // Jika admin ditemukan
     if (!empty($cekadmin)) {
-      // Membuat tiket bisokop yang dipake selama keliling aplikasi
+      // Simpan data admin ke session
       $this->session->set_userdata('id_admin', $cekadmin['id_admin']);
       $this->session->set_userdata('username', $cekadmin['username']);
       return "ada";
     } else {
+      // Admin tidak ditemukan
       return "gak ada";
-    }
   }
+}
+
 
   function ubah($inputan, $id_admin)
   {

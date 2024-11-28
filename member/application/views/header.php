@@ -13,9 +13,9 @@
 
 <body>
   <!-- Mmebuat navbar atau menu-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container">
-      <a href="" class="navbar-brand">Member</a>
+      <a href="" class="navbar-brand">Pengguna</a>
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#naff">
         <span class="navbar-toggler-icon"> </span> </button>
       <div class="collapse navbar-collapse" id="naff">
