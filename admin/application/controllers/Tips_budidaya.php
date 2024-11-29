@@ -22,38 +22,39 @@ class Tips_budidaya extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function tambah()
+    function tambah()
     {
-        // Load model
-        $this->load->model('Mtips_budidaya');
 
-        // Ambil inputan dari formulir
+        //mendapatkan inputan dari formulir pakai $this->input->post()
         $inputan = $this->input->post();
 
-        // Form validation
+        // form validation
         $this->form_validation->set_rules("judul_tips_budidaya", "Nama tips budidaya", "required");
+
+        // atur pesan bindo
         $this->form_validation->set_message("required", "%s wajib diisi");
 
-        // Jika form valid
+        //jika ada inputan
         if ($this->form_validation->run() == true) {
-            // Tambahkan ID otomatis ke inputan
-            $inputan['id_tips_budidaya'] = $this->Mtips_budidaya->generate_id();
-
-            // Simpan data
+            //panggil model Mtips_budidaya
+            $this->load->model('Mtips_budidaya');
+            //jalankan fungsi simpan()
             $this->Mtips_budidaya->simpan($inputan);
 
-            // Pesan sukses
+
+            //pesan dilayar
             $this->session->set_flashdata('pesan_sukses', 'Data tips budidaya tersimpan');
+
+            //redirect ke filter hama_penyakit utk tampil tips_budidaya
+
             redirect('tips_budidaya', 'refresh');
         }
 
-        // Jika belum submit atau form error, load view
-        $data['id_tips_budidaya'] = $this->Mtips_budidaya->generate_id(); // ID otomatis
+
         $this->load->view('header');
-        $this->load->view('tips_budidaya_tambah', $data); // Kirim $data ke view
+        $this->load->view('tips_budidaya_tambah');
         $this->load->view('footer');
     }
-
 
     function hapus($id_tips_budidaya)
     {
