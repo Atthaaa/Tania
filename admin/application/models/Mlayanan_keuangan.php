@@ -28,7 +28,7 @@ class Mlayanan_keuangan extends CI_Model
         $inputan['id_admin'] = $this->session->userdata('id_admin');
 
         // Konfigurasi upload foto
-        $config['upload_path'] = $this->config->item('assets_layanan_keuangan');
+        $config['upload_path'] = $this->config->item('assets_hama_penyakit');
         $config['allowed_types'] = 'gif|jpg|png';
 
         $this->load->library('upload', $config);
@@ -43,6 +43,30 @@ class Mlayanan_keuangan extends CI_Model
         // Simpan data ke tabel `layanan_keuangan`
         $this->db->insert('layanan_keuangan', $inputan);
         }
+
+    public function generate_id()
+    {
+        // Ambil ID terakhir dari database
+        $this->db->select('id_layanan_keuangan');
+        $this->db->order_by('id_layanan_keuangan', 'DESC');
+        $this->db->limit(1);
+        $query = $this->db->get('layanan_keuangan');
+
+        if ($query->num_rows() > 0) {
+            // Ambil ID terakhir
+            $last_id = $query->row()->id_layanan_keuangan;
+            // Ambil angka terakhir dari ID, misalnya HP001 -> 001
+            $last_number = (int) substr($last_id, 2);
+            // Tambahkan 1 ke angka terakhir
+            $new_number = $last_number + 1;
+            // Format angka menjadi 3 digit dengan prefix 'HP'
+            return 'HP' . str_pad($new_number, 3, '0', STR_PAD_LEFT);
+        } else {
+            // Jika tidak ada data, mulai dari HP001
+            return 'HP001';
+        }
+    }
+
 
     function hapus($id_layanan_keuangan)
     {

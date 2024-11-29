@@ -22,39 +22,38 @@ class Info_pasar extends CI_Controller
         $this->load->view('footer');
     }
 
-    function tambah()
-    {
+    public function tambah()
+{
+    // Load model
+    $this->load->model('Minfo_pasar');
 
-        //mendapatkan inputan dari formulir pakai $this->input->post()
-        $inputan = $this->input->post();
+    // Ambil inputan dari formulir
+    $inputan = $this->input->post();
 
-        // form validation
-        $this->form_validation->set_rules("judul_info_pasar", "Nama info pasar", "required");
+    // Form validation
+    $this->form_validation->set_rules("judul_info_pasar", "Nama info pasar", "required");
+    $this->form_validation->set_message("required", "%s wajib diisi");
 
-        // atur pesan bindo
-        $this->form_validation->set_message("required", "%s wajib diisi");
+    // Jika form valid
+    if ($this->form_validation->run() == true) {
+        // Tambahkan ID otomatis ke inputan
+        $inputan['id_info_pasar'] = $this->Minfo_pasar->generate_id();
 
-        //jika ada inputan
-        if ($this->form_validation->run() == true) {
-            //panggil model Minfo_pasar
-            $this->load->model('Minfo_pasar');
-            //jalankan fungsi simpan()
-            $this->Minfo_pasar->simpan($inputan);
+        // Simpan data
+        $this->Minfo_pasar->simpan($inputan);
 
-
-            //pesan dilayar
-            $this->session->set_flashdata('pesan_sukses', 'Data info pasar tersimpan');
-
-            //redirect ke filter hama_penyakit utk tampil info_pasar
-
-            redirect('info_pasar', 'refresh');
-        }
-
-
-        $this->load->view('header');
-        $this->load->view('info_pasar_tambah');
-        $this->load->view('footer');
+        // Pesan sukses
+        $this->session->set_flashdata('pesan_sukses', 'Data info pasar tersimpan');
+        redirect('info pasar', 'refresh');
     }
+
+    // Jika belum submit atau form error, load view
+    $data['id_info_pasar'] = $this->Minfo_pasar->generate_id(); // ID otomatis
+    $this->load->view('header');
+    $this->load->view('info_pasar_tambah', $data); // Kirim $data ke view
+    $this->load->view('footer');
+}
+
 
     function hapus($id_info_pasar)
     {
