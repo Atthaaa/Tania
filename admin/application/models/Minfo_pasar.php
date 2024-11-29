@@ -44,6 +44,29 @@ class Minfo_pasar extends CI_Model
         $this->db->insert('info_pasar', $inputan);
         }
 
+    public function generate_id()
+    {
+        // Ambil ID terakhir dari database
+        $this->db->select('id_info_pasar');
+        $this->db->order_by('id_info_pasar', 'DESC');
+        $this->db->limit(1);
+        $query = $this->db->get('info_pasar');
+
+        if ($query->num_rows() > 0) {
+            // Ambil ID terakhir
+            $last_id = $query->row()->id_info_pasar;
+            // Ambil angka terakhir dari ID, misalnya HP001 -> 001
+            $last_number = (int) substr($last_id, 2);
+            // Tambahkan 1 ke angka terakhir
+            $new_number = $last_number + 1;
+            // Format angka menjadi 3 digit dengan prefix 'HP'
+            return 'HP' . str_pad($new_number, 3, '0', STR_PAD_LEFT);
+        } else {
+            // Jika tidak ada data, mulai dari HP001
+            return 'HP001';
+        }
+    }
+
     function hapus($id_info_pasar)
     {
 

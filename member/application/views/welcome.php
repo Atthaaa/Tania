@@ -27,7 +27,7 @@
       <?php foreach ($tips_budidaya as $key => $value) : ?>
       <div class="col-md-4 text-center">
         <a href="<?= base_url('tips_budidaya' . $value['id_tips_budidaya']); ?>" class="text-decoration-none">
-          <img src="<?php echo $this->config->item('url_tips_budidaya') . $value['foto_tips_budidaya'] ?>"
+          <img src="<?php echo $this->config->item('url_tips_budidaya') . $value['gambar_tips_budidaya'] ?>"
             class="w-50 rounded-circle" alt="">
           <h5 class="mt-3"><?php echo $value['judul_tips_budidaya'] ?></h5>
         </a>
