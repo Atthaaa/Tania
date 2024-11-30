@@ -24,7 +24,6 @@ class Mhama_penyakit extends CI_Model
             $this->db->update('keranjang', $inputan);
         }
     }
-
     function tampil_hamapenyakit_terbaru()
     {
         $this->db->order_by('id_hama_penyakit', 'desc');
