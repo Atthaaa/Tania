@@ -7,9 +7,9 @@
 <html>
 <?php
 $this->load->view('style');
-$id_user = $_SESSION['id_user'];
+$id_admin = $_SESSION['id_admin'];
 // var_dump($_SESSION);die;
-// var_dump($_SESSION['id_user']);die;
+// var_dump($_SESSION['id_admin']);die;
 ?>
 
 <head>
@@ -45,8 +45,9 @@ $id_user = $_SESSION['id_user'];
 									<div class="img_cont">
 										<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_ku">
 									</div>
-									<div class="user_info_ku">
-										<span><?= $_SESSION['nama'] ?></span>
+									<div class="user_info">
+									<!-- <span><?= $data->username ?></span> -->
+									<p>xx</p>
 									</div>
 									<div class="user_info_ku iconya">
 										<i class="fas fa-cog" style="
@@ -94,10 +95,9 @@ $id_user = $_SESSION['id_user'];
 								<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img">
 								<span class="online_icon"></span>
 							</div>
-							<div class="user_info">
-								<span><?= $data->nama ?></span>
-								<p>xx</p>
-							</div>
+							<div class="user_info_ku">
+										<span><?= $_SESSION['username'] ?></span>
+									</div>
 							<div class="video_cam">
 								<span><i class="fas fa-video"></i></span>
 								<span><i class="fas fa-phone"></i></span>
@@ -170,19 +170,19 @@ $id_user = $_SESSION['id_user'];
 		pesan()
 
 		function pesan() {
-			var id_lawan = '<?= $data->id_user ?>'
+			var id_pengguna = '<?= $data->id_admin ?>'
 			$.ajax({
 				type: "post",
 				url: "<?= base_url() ?>Chat/loadChat",
 				data: {
-					id_user: '<?= $id_user ?>',
-					id_lawan: id_lawan
+					id_admin: '<?= $id_admin ?>',
+					id_pengguna: id_pengguna
 				},
 				dataType: "json",
 				success: function(r) {
 					var html = "";
 					var d = r.data;
-					id_user = '<?= $id_user ?>';
+					id_admin = '<?= $id_admin ?>';
 					d.forEach(d => {
 						var today = new Date();
 						var dd = String(today.getDate()).padStart(2, '0');
@@ -205,7 +205,7 @@ $id_user = $_SESSION['id_user'];
 							kapan = tanggal_bulan
 						}
 						// console.log(kapan)
-						if (parseInt(d.id_user) == id_user) {
+						if (parseInt(d.id_admin) == id_admin) {
 
 
 
@@ -245,15 +245,15 @@ $id_user = $_SESSION['id_user'];
 
 		$('.send_btn').click(function(e) {
 			var pesan = $('.type_msg').val();
-			var id_user = '<?= $id_user ?>'
-			var id_lawan = '<?= $data->id_user ?>';
+			var id_admin = '<?= $id_admin ?>'
+			var id_pengguna = '<?= $data->id_admin ?>';
 			if (pesan != "") {
 				$.ajax({
 					type: "post",
 					url: "<?= base_url() ?>/Chat/KirimPesan",
 					data: {
-						id_user,
-						id_lawan,
+						id_admin,
+						id_pengguna,
 						pesan
 					},
 					dataType: "json",
@@ -336,16 +336,16 @@ $id_user = $_SESSION['id_user'];
 				type: "post",
 				url: "<?= base_url() ?>Chat/GetAllOrang",
 				data: {
-					id_user: '<?= $id_user ?>'
+					id_admin: '<?= $id_admin ?>'
 				},
 				dataType: "json",
 				success: function(r) {
 					var html = "";
 					var d = r.data;
-					id_user = '<?= $id_user ?>';
+					id_admin = '<?= $id_admin ?>';
 					d.forEach(d => {
 						html += `
-						<li class="active coba" data-id=${d.id_user}>
+						<li class="active coba" data-id=${d.id_admin}>
 								<div class="d-flex bd-highlight ">
 									<div class="img_cont ">
 										<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img">

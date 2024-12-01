@@ -59,6 +59,11 @@
 </section><section class="bg-light py-5">
   <div class="container">
     <h5 class="text-center mb-5">Info Pasar</h5>
+    <div style="overflow: hidden; height: 500px; width: 100%; position: relative;">
+      <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS5AbWTIKjDlEme8ra6ml3Km31RvnK8-A6HSa50sj31DIUYGBHKnp3SiHB98k0ZE8uCfyPlxMsKize3/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"
+              style="position: absolute; top: -25px;  width: 90%; height: 650px; border: none;">
+      </iframe>
+    </div>
     <div class="row">
       <?php foreach ($info_pasar as $key => $value) : ?>
       <div class="col-md-3">

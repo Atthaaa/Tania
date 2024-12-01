@@ -7,22 +7,19 @@
 <html>
 <?php
 $this->load->view('style');
-$id_user = $_SESSION['id_user'];
-// var_dump($_SESSION);die;
-// var_dump($_SESSION['id_user']);die;
+
 ?>
 
 <head>
 	<title>Chat</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
 <!--Coded With Love By Mutiullah Samim-->
 
 <body>
@@ -40,35 +37,6 @@ $id_user = $_SESSION['id_user'];
 					</div>
 					<div class="card-body contacts_body">
 						<ui class="contacts">
-							<li class="profileku">
-								<div class="d-flex bd-highlight">
-									<div class="img_cont">
-										<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_ku">
-									</div>
-									<div class="user_info_ku">
-										<span><?= $_SESSION['nama'] ?></span>
-									</div>
-									<div class="user_info_ku iconya">
-										<i class="fas fa-cog" style="
-											color: aliceblue;
-											margin-top: 10px;
-										"></i>
-									</div>
-									<div class="user_info_ku iconya">
-										<span class="keluar">
-											<i class="fas fa-sign-out-alt" style="
-											color: aliceblue;
-											margin-top: 10px;
-										"></i>
-										</span>
-
-									</div>
-								</div>
-							</li>
-						</ui>
-					</div>
-					<div class="card-body contacts_body">
-						<ui class="contacts" id="yangAktif">
 							<li class="active">
 								<div class="d-flex bd-highlight">
 									<div class="img_cont">
@@ -95,7 +63,7 @@ $id_user = $_SESSION['id_user'];
 								<span class="online_icon"></span>
 							</div>
 							<div class="user_info">
-								<span><?= $data->nama ?></span>
+								<span>Lawan</span>
 								<p>xx</p>
 							</div>
 							<div class="video_cam">
@@ -158,102 +126,23 @@ $id_user = $_SESSION['id_user'];
 		</div>
 	</div>
 </body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css" integrity="sha512-BMbq2It2D3J17/C7aRklzOODG1IQ3+MHw3ifzBHMBwGO/0yUqYmsStgBjI0z5EYlaDEFnvYV7gNYdD3vFLRKsA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js" integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
 	$(document).ready(function() {
 		$('#action_menu_btn').click(function() {
 			$('.action_menu').toggle();
 		});
-
-
-		pesan()
-
-		function pesan() {
-			var id_lawan = '<?= $data->id_user ?>'
-			$.ajax({
-				type: "post",
-				url: "<?= base_url() ?>Chat/loadChat",
-				data: {
-					id_user: '<?= $id_user ?>',
-					id_lawan: id_lawan
-				},
-				dataType: "json",
-				success: function(r) {
-					var html = "";
-					var d = r.data;
-					id_user = '<?= $id_user ?>';
-					d.forEach(d => {
-						var today = new Date();
-						var dd = String(today.getDate()).padStart(2, '0');
-						var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-						var yyyy = today.getFullYear();
-
-						today = dd + '-' + mm + '-' + yyyy;
-						// console.log(today);
-
-						var times = new Date(d.waktu)
-						var time = times.toLocaleTimeString()
-						var tanggal = String(times.getDate()).padStart(2, '0');
-						var bulan = String(times.getMonth() + 1).padStart(2, '0');
-						var tahun = times.getFullYear()
-						var lengkapDB = tanggal + '-' + bulan + '-' + tahun
-						// console.log(lengkapDB == today)
-						var kapan = "Today"
-						var tanggal_bulan = tanggal + "-" + bulan
-						if (lengkapDB != today) {
-							kapan = tanggal_bulan
-						}
-						// console.log(kapan)
-						if (parseInt(d.id_user) == id_user) {
-
-
-
-
-							html += `<div class="d-flex justify-content-end mb-4">
-							<div class="msg_cotainer_send">
-								${d.isi}
-								<span class="msg_time">${kapan}, ${time}</span>
-							</div>
-						</div>`;
-
-						} else {
-							html += `<div class="d-flex justify-content-start mb-4">
-							<div class="img_cont_msg">
-								<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
-							</div>
-							<div class="msg_cotainer">
-								${d.isi}								
-								<span class="msg_time">${kapan}, ${time}</span>
-
-							</div>
-						</div>`;
-
-
-						}
-
-					});
-					// console.log(html)
-					$('#letakpesan').html(html);
-
-				}
-			});
-		}
-		setInterval(() => {
-			pesan()
-		}, 1000);
-
+		
 		$('.send_btn').click(function(e) {
 			var pesan = $('.type_msg').val();
-			var id_user = '<?= $id_user ?>'
-			var id_lawan = '<?= $data->id_user ?>';
 			if (pesan != "") {
 				$.ajax({
 					type: "post",
-					url: "<?= base_url() ?>/Chat/KirimPesan",
+					url: "<?= base_url() ?>/Chat/KirimPesanKeSatu",
 					data: {
-						id_user,
-						id_lawan,
 						pesan
 					},
 					dataType: "json",
@@ -271,6 +160,10 @@ $id_user = $_SESSION['id_user'];
 
 
 		});
+		const messages = document.getElementById('letakpesan');
+
+
+
 		scrollToBottom()
 
 		function scrollToBottom() {
@@ -283,92 +176,51 @@ $id_user = $_SESSION['id_user'];
 		pesan()
 		$('.search_btn').click(function(e) {
 			pesan()
-			// scrollToBottom()
-		});
-		$('.keluar').click(function(e) {
-
-			Swal.fire({
-				title: 'Anda Akan Keluar?',
-				text: "Apakah Anda Yakin Akan keluar ? ",
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Yes!'
-			}).then((result) => {
-				if (result.isConfirmed) {
-					$.ajax({
-						type: "post",
-						url: "<?= base_url() ?>/Chat/logout",
-						// data: "data",
-						dataType: "json",
-						success: function(r) {
-							// console.log(r)
-							// return false
-							if (r) {
-								Swal.fire(
-									'success!',
-									r.pesan,
-									'success'
-								)
-								setTimeout(() => {
-									location.href = '<?= base_url() ?>Chat/login';
-								}, 1000);
-							} else {
-								'error!',
-								r.pesan,
-								'error'
-							}
-
-						}
-					});
-
-				}
-			})
-
 		});
 
+		// test()
 
-		orang()
-
-		function orang() {
+		function pesan() {
 			$.ajax({
 				type: "post",
-				url: "<?= base_url() ?>Chat/GetAllOrang",
+				url: "<?= base_url() ?>Chat/loadChat",
 				data: {
-					id_user: '<?= $id_user ?>'
+					id_user: 2
 				},
 				dataType: "json",
 				success: function(r) {
 					var html = "";
 					var d = r.data;
-					id_user = '<?= $id_user ?>';
+					id_user = 2;
 					d.forEach(d => {
-						html += `
-						<li class="active coba" data-id=${d.id_user}>
-								<div class="d-flex bd-highlight ">
-									<div class="img_cont ">
-										<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img">
-										<span class="online_icon " ></span>
-									</div>
-									<div class="user_info ">	
-										<span class="">${d.nama}</span>
-										<p class="">${d.nama} is online</p>
-									</div>
-								</div>
-							</li>`;
+
+						if (parseInt(d.id_user) == id_user) {
+							html += `<div class="d-flex justify-content-start mb-4">
+							<div class="img_cont_msg">
+								<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
+							</div>
+							<div class="msg_cotainer">
+								${d.isi}
+								<span class="msg_time">8:40 AM, Today</span>
+							</div>
+						</div>`;
+
+						} else {
+							html += `<div class="d-flex justify-content-end mb-4">
+							<div class="msg_cotainer_send">
+								${d.isi}
+								<span class="msg_time_send">8:55 AM, Today</span>
+							</div>
+						</div>`;
+						}
 
 					});
-					$('#yangAktif').html(html);
+					// console.log(html)
+					$('#letakpesan').html(html);
+
 				}
 			});
 		}
-		$('body').on('click', '.coba', function() {
-			var id = $(this).attr('data-id');
-			window.location.replace("<?= base_url() ?>Chat/" + id);
-
-		});
-
 
 	});
 </script>

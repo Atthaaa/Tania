@@ -1,13 +1,5 @@
 <div class="container">
   <h5>Data Info Pasar</h5>
-
- <!--  <div style="overflow: hidden; height: 500px; width: 100%; position: relative;">
-  <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS5AbWTIKjDlEme8ra6ml3Km31RvnK8-A6HSa50sj31DIUYGBHKnp3SiHB98k0ZE8uCfyPlxMsKize3/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"
-          style="position: absolute; top: -20px; width: 100%; height: 650px; border: none;">
-  </iframe>
-</div> -->
-
-
   <table class="table table-bordered" id="tabelku">
     <thead>
       <tr>

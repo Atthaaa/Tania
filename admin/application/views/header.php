@@ -30,7 +30,7 @@
             <a href="<?php echo base_url('Info_pasar') ?>" class="nav-link">Info Pasar</a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo base_url('Chat') ?>" class="nav-link">Chat</a>
+            <a href="<?php echo base_url('Chat') ?>" class="nav-link">Konsultasi</a>
           </li>
           <li class="nav-item">
             <a href="<?php echo base_url('Pengguna') ?>" class="nav-link">Member</a>
