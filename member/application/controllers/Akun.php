@@ -6,8 +6,8 @@ class Akun extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    // Jika tidk ada tiket suruh login
-    if (!$this->session->userdata('id_member')) {
+    // Jika tidak ada tiket suruh login
+    if (!$this->session->userdata('id_pengguna')) {
       redirect('/', 'refresh');
     }
   }
@@ -20,24 +20,18 @@ class Akun extends CI_Controller
     $inputan = $this->input->post();
 
     // Form validation username dan password wajib di isi
-    $this->form_validation->set_rules("email_member", "Email", "required");
-    $this->form_validation->set_rules("nama_member", "Nama Lengkap", "required");
-    $this->form_validation->set_rules("alamat_member", "Alamat", "required");
-    $this->form_validation->set_rules("wa_member", "Nomor WA", "required");
-    $this->form_validation->set_rules("kode_distrik_member", "Kode Distrik", "required");
-
+    $this->form_validation->set_rules("Nama", "Nama Lengkap", "required");
+    $this->form_validation->set_rules("No_HP", "No Telepon", "required");
+    $this->form_validation->set_rules("Jenis_kelamin", "Jenis Kelamin", "required");
+  
     // atur pesan bindo
     $this->form_validation->set_message("required", "%s wajib diisi");
 
     if ($this->form_validation->run() == true) {
-      $this->load->model('Mmember');
-      $id_member = $this->session->userdata('id_member');
+      $this->load->model('Mpengguna');
+      $id_pengguna = $this->session->userdata('id_pengguna');
 
-      $kode_distrik_member = $this->input->post('kode_distrik_member');
-      $detail = $this->Mongkir->detail_distrik($kode_distrik_member);
-      $inputan['nama_distrik_member'] = $detail['type'] . " " . $detail['city_name'] . " " . $detail['province'];
-
-      $this->Mmember->ubah($inputan, $id_member);
+      $this->Mpengguna->ubah($inputan, $id_pengguna);
 
       $this->session->set_flashdata('pesan_sukses', 'Akun telah dirubah cakkk');
 
