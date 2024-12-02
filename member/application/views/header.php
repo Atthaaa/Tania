@@ -18,21 +18,30 @@
       <a href="" class="navbar-brand">Pengguna</a>
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#naff">
         <span class="navbar-toggler-icon"> </span> </button>
-      <div class="collapse navbar-collapse" id="naff">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a href="<?php echo base_url('') ?>" class="nav-link">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo base_url('kategori') ?>" class="nav-link">Kategori</a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo base_url('produk') ?>" class="nav-link">Produk</a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo base_url('keranjang') ?>" class="nav-link">Keranjang</a>
-          </li>
-
+      <div class="collapse navbar-collapse text-center" id="naff">
+        <ul class="navbar-nav mx-10">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Konten Informasi
+              </a>
+              <ul class="dropdown-menu bg-success">
+                <li class="dropdown-item bg-success">
+                <a href="<?php echo base_url('') ?>" class="nav-link">Home</a>
+                </li>
+                <li class="dropdown-item bg-success">
+                  <a href="<?php echo base_url('hama_penyakit') ?>" class="nav-link">Hama Penyakit</a>
+                </li>
+                <li class="dropdown-item bg-success">
+                  <a href="<?php echo base_url('layanan_keuangan') ?>" class="nav-link">Layanan Keuangan</a>
+                </li>
+                <li class="dropdown-item bg-success">
+                  <a href="<?php echo base_url('tips_budidaya') ?>" class="nav-link">Tips Budidaya</a>
+                </li>
+                <li class="dropdown-item bg-success">
+                  <a href="<?php echo base_url('info_pasar') ?>" class="nav-link">Info Pasar</a>
+                </li>
+              </ul>
+            </li>
         </ul>
         <?php if ($this->session->userdata('id_member')) : ?>
           <ul class="navbar-nav ms-auto">

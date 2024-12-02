@@ -23,17 +23,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/TANIA/member/';
-$config['assets_slider'] = $_SERVER['DOCUMENT_ROOT'] . '/TANIA/assets/slider/';
-$config['url_slider'] = 'http://localhost/TANIA/assets/slider/';
-$config['assets_hama_penyakit'] = $_SERVER['DOCUMENT_ROOT'] . '/TANIA/assets/hama_penyakit/';
-$config['url_hama_penyakit'] = 'http://localhost/TANIA/assets/hama_penyakit/';
-$config['assets_tips_budidaya'] = $_SERVER['DOCUMENT_ROOT'] . '/TANIA/assets/tips_budidaya/';
-$config['url_tips_budidaya'] = 'http://localhost/TANIA/assets/tips_budidaya/';
-$config['assets_layanan_keuangan'] = $_SERVER['DOCUMENT_ROOT'] . '/TANIA/assets/layanan_keuangan/';
-$config['url_layanan_keuangan'] = 'http://localhost/TANIA/assets/layanan_keuangan/';
-$config['assets_info_pasar'] = $_SERVER['DOCUMENT_ROOT'] . '/TANIA/assets/info_pasar/';
-$config['url_info_pasar'] = 'http://localhost/TANIA/assets/info_pasar/';
+$config['base_url'] = 'http://localhost/Tania/member/';
+$config['assets_slider'] = $_SERVER['DOCUMENT_ROOT'] . '/Tania/assets/slider/';
+$config['url_slider'] = 'http://localhost/Tania/assets/slider/';
+$config['assets_hama_penyakit'] = $_SERVER['DOCUMENT_ROOT'] . '/Tania/assets/hama_penyakit/';
+$config['url_hama_penyakit'] = 'http://localhost/Tania/assets/hama_penyakit/';
+$config['assets_tips_budidaya'] = $_SERVER['DOCUMENT_ROOT'] . '/Tania/assets/tips_budidaya/';
+$config['url_tips_budidaya'] = 'http://localhost/Tania/assets/tips_budidaya/';
+$config['assets_layanan_keuangan'] = $_SERVER['DOCUMENT_ROOT'] . '/Tania/assets/layanan_keuangan/';
+$config['url_layanan_keuangan'] = 'http://localhost/Tania/assets/layanan_keuangan/';
+$config['assets_info_pasar'] = $_SERVER['DOCUMENT_ROOT'] . '/Tania/assets/info_pasar/';
+$config['url_info_pasar'] = 'http://localhost/Tania/assets/info_pasar/';
 /*
 |--------------------------------------------------------------------------
 | Index File

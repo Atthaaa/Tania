@@ -44,7 +44,7 @@ class Info_pasar extends CI_Controller
 
         // Pesan sukses
         $this->session->set_flashdata('pesan_sukses', 'Data info pasar tersimpan');
-        redirect('info pasar', 'refresh');
+        redirect('info_pasar', 'refresh');
     }
 
     // Jika belum submit atau form error, load view

@@ -14,9 +14,9 @@
     </div>
     <div class="mb-3">
       <label>Isi Artikel</label>
-      <textarea name="artikel_info_pasar" id="editorku" class="form-control"><?php echo set_value("artikel_info_pasar") ?></textarea>
+      <textarea name="artikel_informasi_pasar" id="editorku" class="form-control"><?php echo set_value("artikel_informasi_pasar") ?></textarea>
       <span class="text-danger small">
-        <?php echo form_error("artikel_info_pasar") ?>
+        <?php echo form_error("artikel_informasi_pasar") ?>
       </span>
     </div>
     <div class="mb-3">

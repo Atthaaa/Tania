@@ -56,7 +56,7 @@
     </div>
   </div>
 
-</section><section class="bg-light py-5">
+<!-- </section><section class="bg-light py-5"> -->
   <div class="container">
     <h5 class="text-center mb-5">Info Pasar</h5>
     <div style="overflow: hidden; height: 500px; width: 100%; position: relative;">
