@@ -39,16 +39,16 @@
         <form action="<?= base_url('welcome'); ?>" method="post">
           <div class="mb-3">
             <label for="">Username</label>
-            <input type="text" name="username_member" class="form-control" value="<?php echo set_value("username_member") ?>">
+            <input type="text" name="Username" class="form-control" value="<?php echo set_value("Username") ?>">
             <div class="text-danger small">
-              <?php echo form_error("username_member") ?>
+              <?php echo form_error("Username") ?>
             </div>
           </div>
           <div class="mb-3">
             <label for="">Password</label>
-            <input type="password" name="password_member" class="form-control" value="<?php echo set_value("password_member") ?>">
+            <input type="password" name="Password" class="form-control" value="<?php echo set_value("Password") ?>">
             <div class="text-danger small">
-              <?php echo form_error("password_member") ?>
+              <?php echo form_error("Password") ?>
             </div>
           </div>
           <button class="btn btn-primary">Login</button>

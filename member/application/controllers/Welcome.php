@@ -28,9 +28,6 @@ class Welcome extends CI_Controller
 			}
 		}
 
-		$this->load->model('Mslider');
-		$data['slider'] = $this->Mslider->tampil();
-
 		$this->load->model('Mhama_penyakit');
 		$data['hama_penyakit'] = $this->Mhama_penyakit->tampil_hamapenyakit_terbaru();
 
