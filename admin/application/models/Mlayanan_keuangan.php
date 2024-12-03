@@ -28,7 +28,7 @@ class Mlayanan_keuangan extends CI_Model
         $inputan['id_admin'] = $this->session->userdata('id_admin');
 
         // Konfigurasi upload foto
-        $config['upload_path'] = $this->config->item('assets_hama_penyakit');
+        $config['upload_path'] = $this->config->item('assets_layanan_keuangan');
         $config['allowed_types'] = 'gif|jpg|png';
 
         $this->load->library('upload', $config);

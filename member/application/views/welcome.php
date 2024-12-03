@@ -1,41 +1,46 @@
-<div id="carouselExampleCaptions" class="carousel slide">
-
-  <div class="carousel-inner">
-
-    <?php foreach ($slider as $key => $value) : ?>
-    <div class="carousel-item <?php echo $key == 0 ? 'active' : '' ?>">
-      <img src="<?php echo $this->config->item('url_slider') . $value['foto_slider'] ?>" class="d-block w-100"
-        alt="...">
+<div class="container my-5">
+  <div id="carouselExampleCaptions" class="carousel slide">
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner" style="border-radius: 30px;">
+    <div class="carousel-item active">
+      <img src="../assets/slider/slider1.jpg" class="d-block w-100" alt="...">
     </div>
-    <?php endforeach; ?>
-
+    <div class="carousel-item">
+      <img src="../assets/slider/slider2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../assets/slider/slider3.jpg" class="d-block w-100" alt="...">
+    </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
 </div>
 
-<section class="bg-white py-5">
+</div>
+<section class="bg-light py-5">
   <div class="container">
     <h5 class="text-center mb-5">Tips Budidaya</h5>
     <div class="row">
       <?php foreach ($tips_budidaya as $key => $value) : ?>
-      <div class="col-md-4 text-center">
+      <div class="col-md-3">
         <a href="<?= base_url('tips_budidaya' . $value['id_tips_budidaya']); ?>" class="text-decoration-none">
-          <img src="<?php echo $this->config->item('url_tips_budidaya') . $value['gambar_tips_budidaya'] ?>"
-            class="w-50 rounded-circle" alt="">
-          <h5 class="mt-3"><?php echo $value['judul_tips_budidaya'] ?></h5>
+          <div class="card mb-3 border-0 shadow">
+            <img src="<?php echo $this->config->item('url_tips_budidaya') . $value['gambar_tips_budidaya'] ?>" alt="">
+            <div class="card-body text-center">
+              <h6><?php echo $value['judul_tips_budidaya'] ?></h6>
+            </div>
+          </div>
         </a>
       </div>
       <?php endforeach; ?>
     </div>
   </div>
-</section>
 
 <section class="bg-light py-5">
   <div class="container">
@@ -58,12 +63,13 @@
 
 <!-- </section><section class="bg-light py-5"> -->
   <div class="container">
-    <h5 class="text-center mb-5">Info Pasar</h5>
-    <div style="overflow: hidden; height: 500px; width: 100%; position: relative;">
+    <h5 class="text-center mt-5 mb-3">Info Pasar</h5>
+    <div style="display: flex; justify-content: center; align-items: center; height: 50vh; position: relative; overflow: hidden;">
       <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS5AbWTIKjDlEme8ra6ml3Km31RvnK8-A6HSa50sj31DIUYGBHKnp3SiHB98k0ZE8uCfyPlxMsKize3/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"
               style="position: absolute; top: -25px;  width: 90%; height: 650px; border: none;">
       </iframe>
     </div>
+    <br><br>
     <div class="row">
       <?php foreach ($info_pasar as $key => $value) : ?>
       <div class="col-md-3">
@@ -82,7 +88,7 @@
 
 </section><section class="bg-light py-5">
   <div class="container">
-    <h5 class="text-center mb-5">Hama dan Penyakit</h5>
+    <h5 class="text-center mb-5">Hama dan Penkit</h5>
     <div class="row">
       <?php foreach ($hama_penyakit as $key => $value) : ?>
       <div class="col-md-3">
