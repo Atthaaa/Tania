@@ -1,44 +1,55 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Register extends CI_Controller
 {
-	public function index()
-	{
-		$this->load->model('Mongkir');
-		$this->load->model('Mmember');
-		$data['distrik'] = $this->Mongkir->tampil_distrik();
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Mpengguna');
+        $this->load->library('form_validation');
+    }
 
-		$this->form_validation->set_rules('email_member', 'email', 'required|is_unique[member.email_member]');
-		$this->form_validation->set_rules('password_member', 'password', 'required');
-		$this->form_validation->set_rules('nama_member', 'nama', 'required');
-		$this->form_validation->set_rules('alamat_member', 'alamat', 'required');
-		$this->form_validation->set_rules('wa_member', 'wa', 'required');
-		$this->form_validation->set_rules('city_id', 'city', 'required');
+    public function index()
+    {
+        $data['id_pengguna'] = $this->Mpengguna->generate_id();
 
-		$this->form_validation->set_message('required', "%s wajib di isi");
-		$this->form_validation->set_message('is_unique', "%s yang sama sudah digunakan");
+        $this->load->view('header');
+        $this->load->view('register', $data);
+        $this->load->view('footer');
+    }
 
+    public function save()
+    {
+        // Validasi form
+        $this->form_validation->set_rules('Username', 'Username', 'required');
+        $this->form_validation->set_rules('Password', 'Password', 'required');
+        $this->form_validation->set_rules('Nama', 'Nama', 'required');
+        $this->form_validation->set_rules('No_HP', 'Nomor HP', 'required|numeric');
+        $this->form_validation->set_rules('Jenis_kelamin', 'Jenis Kelamin', 'required');
 
-		if ($this->form_validation->run() == TRUE) {
-			$city_id = $this->input->post('city_id');
-			$detail = $this->Mongkir->detail_distrik($city_id);
+        if ($this->form_validation->run() == FALSE) {
+            $data['id_pengguna'] = $this->Mpengguna->generate_id();
+            $this->load->view('register', $data);
+        } else {
+            // Data untuk disimpan
+            $data = [
+                'id_pengguna' => $this->input->post('id_pengguna'),
+                'Username' => $this->input->post('Username'),
+                'Password' => $this->input->post('Password'), // Harusnya dienkripsi
+                'Nama' => $this->input->post('Nama'),
+                'No_HP' => $this->input->post('No_HP'),
+                'Jenis_kelamin' => $this->input->post('Jenis_kelamin'),
+            ];
 
-			$m['email_member'] = $this->input->post('email_member');
-			$m['password_member'] = sha1($this->input->post('password_member'));
-			$m['nama_member'] = $this->input->post('nama_member');
-			$m['alamat_member'] = $this->input->post('alamat_member');
-			$m['wa_member'] = $this->input->post('wa_member');
-			$m['kode_distrik_member'] = $this->input->post('city_id');
-			$m['nama_distrik_member'] = $detail['type'] . " " . $detail['city_name'] . " " . $detail['province'];
-
-			$this->Mmember->register($m);
-			$this->session->set_flashdata('pesan_sukses', 'registrasi berhasil, silahkan login');
-			redirect('/', 'refresh');
-		}
-
-		$this->load->view('header');
-		$this->load->view('register', $data);
-		$this->load->view('footer');
-	}
+            if ($this->Mpengguna->save($data)) {
+                // Flashdata pesan sukses
+                $this->session->set_flashdata('pesan_sukses', 'Data berhasil disimpan!');
+            } else {
+                // Flashdata pesan gagal
+                $this->session->set_flashdata('pesan_gagal', 'Data gagal disimpan.');
+            }
+            redirect('register');
+        }
+    }
 }

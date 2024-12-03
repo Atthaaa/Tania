@@ -23,36 +23,36 @@ class Hama_penyakit extends CI_Controller
     }
 
     public function tambah()
-{
-    // Load model
-    $this->load->model('Mhama_penyakit');
+    {
+        // Load model
+        $this->load->model('Mhama_penyakit');
 
-    // Ambil inputan dari formulir
-    $inputan = $this->input->post();
+        // Ambil inputan dari formulir
+        $inputan = $this->input->post();
 
-    // Form validation
-    $this->form_validation->set_rules("judul_hama_penyakit", "Nama hama penyakit", "required");
-    $this->form_validation->set_message("required", "%s wajib diisi");
+        // Form validation
+        $this->form_validation->set_rules("judul_hama_penyakit", "Nama hama penyakit", "required");
+        $this->form_validation->set_message("required", "%s wajib diisi");
 
-    // Jika form valid
-    if ($this->form_validation->run() == true) {
-        // Tambahkan ID otomatis ke inputan
-        $inputan['id_hama_penyakit'] = $this->Mhama_penyakit->generate_id();
+        // Jika form valid
+        if ($this->form_validation->run() == true) {
+            // Tambahkan ID otomatis ke inputan
+            $inputan['id_hama_penyakit'] = $this->Mhama_penyakit->generate_id();
 
-        // Simpan data
-        $this->Mhama_penyakit->simpan($inputan);
+            // Simpan data
+            $this->Mhama_penyakit->simpan($inputan);
 
-        // Pesan sukses
-        $this->session->set_flashdata('pesan_sukses', 'Data hama penyakit tersimpan');
-        redirect('hama_penyakit', 'refresh');
+            // Pesan sukses
+            $this->session->set_flashdata('pesan_sukses', 'Data hama penyakit tersimpan');
+            redirect('hama_penyakit', 'refresh');
+        }
+
+        // Jika belum submit atau form error, load view
+        $data['id_hama_penyakit'] = $this->Mhama_penyakit->generate_id(); // ID otomatis
+        $this->load->view('header');
+        $this->load->view('hama_penyakit_tambah', $data); // Kirim $data ke view
+        $this->load->view('footer');
     }
-
-    // Jika belum submit atau form error, load view
-    $data['id_hama_penyakit'] = $this->Mhama_penyakit->generate_id(); // ID otomatis
-    $this->load->view('header');
-    $this->load->view('hama_penyakit_tambah', $data); // Kirim $data ke view
-    $this->load->view('footer');
-}
 
 
     function hapus($id_hama_penyakit)

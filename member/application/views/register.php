@@ -1,51 +1,54 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-
-      <h5>Registrasi Member</h5>
-
-      <form action="" method="post">
-
-        <div class="mb-3">
-          <label for="">Email</label>
-          <input type="text" name="email_member" value="<?php echo set_value('email_member') ?>" class="form-control">
-          <span class="text-muted"><?php echo form_error('email_member') ?></span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi Pengguna</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h4>Registrasi Pengguna</h4>
+            <form action="<?php echo site_url('register/save'); ?>" method="post">
+                <div class="form-group">
+                    <label>ID Pengguna</label>
+                    <input type="text" name="id_pengguna" value="<?php echo $id_pengguna; ?>" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="Username" class="form-control" value="<?php echo set_value('Username'); ?>">
+                    <?php echo form_error('Username', '<small class="text-danger">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="Password" class="form-control" value="<?php echo set_value('Password'); ?>">
+                    <?php echo form_error('Password', '<small class="text-danger">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" name="Nama" class="form-control" value="<?php echo set_value('Nama'); ?>">
+                    <?php echo form_error('Nama', '<small class="text-danger">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Nomor HP</label>
+                    <input type="text" name="No_HP" class="form-control" value="<?php echo set_value('No_HP'); ?>">
+                    <?php echo form_error('No_HP', '<small class="text-danger">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    <select name="Jenis_kelamin" class="form-control">
+                        <option value="">Pilih</option>
+                        <option value="Laki-laki" <?php echo set_select('Jenis_kelamin', 'Laki-laki'); ?>>Laki-laki</option>
+                        <option value="Perempuan" <?php echo set_select('Jenis_kelamin', 'Perempuan'); ?>>Perempuan</option>
+                    </select>
+                    <?php echo form_error('Jenis_kelamin', '<small class="text-danger">', '</small>'); ?>
+                </div>
+                <button type="submit" class="btn btn-primary">Daftar</button>
+            </form>
         </div>
-        <div class="mb-3">
-          <label for="">Password</label>
-          <input type="text" name="password_member" value="<?php echo set_value('password_member') ?>" class="form-control">
-          <span class="text-muted"><?php echo form_error('password_member') ?></span>
-        </div>
-        <div class="mb-3">
-          <label for="">Nama</label>
-          <input type="text" name="nama_member" value="<?php echo set_value('nama_member') ?>" class="form-control">
-          <span class="text-muted"><?php echo form_error('nama_member') ?></span>
-        </div>
-        <div class="mb-3">
-          <label for="">Alamat</label>
-          <textarea name="alamat_member" id="" class="form-control"><?php echo set_value('alamat_member') ?></textarea>
-          <span class="text-muted"><?php echo form_error('alamat_member') ?></span>
-        </div>
-        <div class="mb-3">
-          <label for="">Nomor WA</label>
-          <input type="text" name="wa_member" value="<?php echo set_value('wa_member') ?>" class="form-control">
-          <span class="text-muted"><?php echo form_error('wa_member') ?></span>
-        </div>
-        <div class="mb-3">
-          <label for="">Kota/Kabupaten</label>
-          <select name="city_id" id="" class="form-control form-select">
-            <option value="">Pilih</option>
-            <?php foreach ($distrik as $key => $value) : ?>
-              <option value="<?php echo $value['city_id'] ?>" <?php echo $value['city_id'] == set_value('city_id') ? 'selected' : '' ?>>
-                <?php echo $value['type'] ?> <?php echo $value['city_name'] ?> - <?php echo $value['province'] ?></option>
-            <?php endforeach; ?>
-          </select>
-          <span class="text-muted"><?php echo form_error('city_id') ?></span>
-        </div>
-
-        <button class="btn btn-primary">Kirim</button>
-
-      </form>
     </div>
-  </div>
 </div>
+</body>
+</html>

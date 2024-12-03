@@ -20,14 +20,14 @@
         <span class="navbar-toggler-icon"> </span> </button>
       <div class="collapse navbar-collapse text-center" id="naff">
         <ul class="navbar-nav mx-10">
+          <li class="nav-item">
+            <a href="<?php echo base_url('') ?>" class="nav-link">Home</a>
+          </li>
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Konten Informasi
               </a>
               <ul class="dropdown-menu bg-success">
-                <li class="dropdown-item bg-success">
-                <a href="<?php echo base_url('') ?>" class="nav-link">Home</a>
-                </li>
                 <li class="dropdown-item bg-success">
                   <a href="<?php echo base_url('Hama_penyakit') ?>" class="nav-link">Hama Penyakit</a>
                 </li>
