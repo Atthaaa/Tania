@@ -9,8 +9,8 @@ class Welcome extends CI_Controller
 		$inputan = $this->input->post();
 
 		// Form validation username dan password wajib di isi
-		$this->form_validation->set_rules("username", "Username", "required");
-		$this->form_validation->set_rules("password", "Password", "required");
+		$this->form_validation->set_rules("Username", "Username", "required");
+		$this->form_validation->set_rules("Password", "Password", "required");
 
 		// atur pesan bindo
 		$this->form_validation->set_message("required", "%s wajib diisi");
@@ -19,13 +19,14 @@ class Welcome extends CI_Controller
 			$this->load->model('Mpengguna');
 			$output = $this->Mpengguna->login($inputan);
 
-			if ($output == "ada") {
-				$this->session->set_flashdata('pesan_sukses', 'Berhasil login');
-				redirect('home', 'refresh');
-			} else {
-				$this->session->set_flashdata('pesan_gagal', 'Gagal login');
-				redirect('/', 'refresh');
-			}
+			 if ($this->Mpengguna->login($inputan)) {
+                // Flashdata pesan sukses
+                $this->session->set_flashdata('pesan_sukses', 'Berhasil login');
+            } else {
+                // Flashdata pesan gagal
+                $this->session->set_flashdata('pesan_gagal', 'Gagal login');
+            }
+            redirect('/', 'refresh');
 		}
 
 		$this->load->model('Mhama_penyakit');

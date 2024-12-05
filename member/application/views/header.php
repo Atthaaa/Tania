@@ -43,7 +43,7 @@
               </ul>
             </li>
         </ul>
-        <?php if ($this->session->userdata('id_member')) : ?>
+        <?php if ($this->session->userdata('id_pengguna')) : ?>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a href="<?php echo base_url('logout') ?>" class="nav-link">Logout</a>
@@ -51,7 +51,7 @@
           </ul>
         <?php endif; ?>
 
-        <?php if (!$this->session->userdata('id_member')) : ?>
+        <?php if (!$this->session->userdata('id_pengguna')) : ?>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a href="#" data-bs-toggle="modal" data-bs-target="#login" class="nav-link">Login</a>

@@ -36,7 +36,7 @@ class Register extends CI_Controller
             $data = [
                 'id_pengguna' => $this->input->post('id_pengguna'),
                 'Username' => $this->input->post('Username'),
-                'Password' => $this->input->post('Password'), // Harusnya dienkripsi
+                'Password' => sha1($this->input->post('Password')), // Harusnya dienkripsi
                 'Nama' => $this->input->post('Nama'),
                 'No_HP' => $this->input->post('No_HP'),
                 'Jenis_kelamin' => $this->input->post('Jenis_kelamin'),

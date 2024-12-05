@@ -21,22 +21,32 @@ class Mpengguna extends CI_Model
         }
     }
 
-    public function validate_user($username, $password) {
-        // Query to check user credentials
-        $this->db->where('username', $username);
-        $query = $this->db->get('users');
-        
-        if ($query->num_rows() == 1) {
-            $user = $query->row();
-            
-            // Verify password (assuming password_hash is used)
-            if (password_verify($password, $user->password)) {
-                return $user;
-            }
-        }
-        
-        return false;
+    function login($inputan)
+  {
+    $username = $inputan['Username'];
+    $password = $inputan['Password'];
+    $password = sha1($password);
+
+    // cek ke database
+    $this->db->where('Username', $username);
+    $this->db->where('Password', $password);
+    $q = $this->db->get('pengguna');
+    $cekmember = $q->row_array();
+
+    // jika tidak kosong maka ada
+    if (!empty($cekmember)) {
+      // Membuat tiket bisokop yang dipake selama keliling aplikasi
+      $this->session->set_userdata('id_pengguna', $cekmember['id_pengguna']);
+      $this->session->set_userdata('Username', $cekmember['Username']);
+      $this->session->set_userdata('Nama', $cekmember['Nama']);
+      $this->session->set_userdata('Password', $cekmember['Password']);
+      $this->session->set_userdata('No_HP', $cekmember['No_HP']);
+      $this->session->set_userdata('Jenis_kelamin', $cekmember['Jenis_kelamin']);
+      return "ada";
+    } else {
+      return "gak ada";
     }
+  }
 
     // Function untuk menyimpan data pengguna
     public function save($data)
