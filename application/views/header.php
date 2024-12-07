@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -13,7 +14,9 @@
 
 <body>
   <!-- Mmebuat navbar atau menu-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <nav class="navbar navbar-expand-lg navbar-dark mb-4" style="background-color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); height: 75px;">
+    <div class="container">
+      <img src="./assets/logo_tania.png" style="height: 30px; margin-right: 170px;">
     <div class="container">
       <a href="" class="navbar-brand">Pengguna</a>
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#naff">
@@ -45,6 +48,9 @@
         </ul>
         <?php if ($this->session->userdata('id_pengguna')) : ?>
           <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="#" class="nav-link"><?php echo $this->session->userdata("Nama") ?></a>
+            </li>
             <li class="nav-item">
               <a href="<?php echo base_url('logout') ?>" class="nav-link">Logout</a>
             </li>

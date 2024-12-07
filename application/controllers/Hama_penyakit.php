@@ -5,7 +5,7 @@ class Hama_penyakit extends CI_Controller
     {
         parent::__construct();
         // Jika tidk ada tiket suruh login
-        if (!$this->session->userdata('id_member')) {
+        if (!$this->session->userdata('id_pengguna')) {
             redirect('/', 'refresh');
         }
     }
@@ -18,7 +18,7 @@ class Hama_penyakit extends CI_Controller
         $data['hama_penyakit'] = $this->Mhama_penyakit->tampil();
 
         $this->load->view('header');
-        $this->load->view('hama_penyakit_tampil', $data);
+        $this->load->view('hama_penyakit', $data);
         $this->load->view('footer');
     }
 }

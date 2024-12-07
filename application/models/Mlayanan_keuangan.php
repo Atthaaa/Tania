@@ -16,7 +16,7 @@ class Mlayanan_keuangan extends CI_Model
     {
 
         //melakukan query
-        $q = $this->db->get("kategori");
+        $q = $this->db->get("layanan_keuangan");
 
         //wajib kita pecah ke array
         $d = $q->result_array();
@@ -34,12 +34,14 @@ class Mlayanan_keuangan extends CI_Model
         return $d;
     }
 
-    function produk($id_kategori)
+   public function cari_layanan_keuangan($query)
     {
-        $this->db->where('id_kategori', $id_kategori);
-        $q = $this->db->get('produk');
-        $d = $q->result_array();
-
-        return $d;
+    // Query untuk mencari layanan keuangan berdasarkan judul
+    $this->db->like('judul_layanan_keuangan', $query);
+    $query = $this->db->get('layanan_keuangan');
+    return $query->result_array();
     }
+
+    
+
 }

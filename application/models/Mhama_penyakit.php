@@ -15,9 +15,11 @@ class Mhama_penyakit extends CI_Model
 
     function tampil()
     {
-         $this->db->order_by('id_hama_penyakit');
-        $q = $this->db->get('hama_penyakit');
-        $this->db->get('hama_penyakit');
+
+        //melakukan query
+        $q = $this->db->get("hama_penyakit");
+
+        //wajib kita pecah ke array
         $d = $q->result_array();
 
         return $d;

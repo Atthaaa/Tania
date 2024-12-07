@@ -1,6 +1,6 @@
-</section><section class="bg-light py-5">
+<section class="bg-light py-5">
   <div class="container">
-    <h5 class="text-center mb-5">Hama dan Penyakit</h5>
+    <h5 class="text-center mb-5">Hama Penyakit</h5>
     <div class="row">
       <?php foreach ($hama_penyakit as $key => $value) : ?>
       <div class="col-md-3">
@@ -16,4 +16,3 @@
       <?php endforeach; ?>
     </div>
   </div>
-</section>

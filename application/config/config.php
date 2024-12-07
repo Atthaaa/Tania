@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/Tania/member/';
+$config['base_url'] = 'http://localhost/Tania/';
 $config['assets_slider'] = $_SERVER['DOCUMENT_ROOT'] . '/Tania/assets/slider/';
 $config['url_slider'] = 'http://localhost/Tania/assets/slider/';
 $config['assets_hama_penyakit'] = $_SERVER['DOCUMENT_ROOT'] . '/Tania/assets/hama_penyakit/';

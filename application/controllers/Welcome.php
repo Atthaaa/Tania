@@ -19,14 +19,13 @@ class Welcome extends CI_Controller
 			$this->load->model('Mpengguna');
 			$output = $this->Mpengguna->login($inputan);
 
-			 if ($this->Mpengguna->login($inputan)) {
-                // Flashdata pesan sukses
-                $this->session->set_flashdata('pesan_sukses', 'Berhasil login');
-            } else {
-                // Flashdata pesan gagal
-                $this->session->set_flashdata('pesan_gagal', 'Gagal login');
-            }
-            redirect('/', 'refresh');
+			if ($output == "ada") {
+				$this->session->set_flashdata('pesan_sukses', 'Berhasil login');
+				redirect('home', 'refresh');
+			} else {
+				$this->session->set_flashdata('pesan_gagal', 'Gagal login');
+				redirect('/', 'refresh');
+			}
 		}
 
 		$this->load->model('Mhama_penyakit');
