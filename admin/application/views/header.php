@@ -22,11 +22,14 @@
           </li>
           <li class="nav-item">
             <a href="<?php echo base_url('Hama_penyakit') ?>" class="nav-link" style="color: black;">Hama Penyakit</a>
-          </li><li class="nav-item">
+          </li>
+          <li class="nav-item">
             <a href="<?php echo base_url('Tips_budidaya') ?>" class="nav-link" style="color: black;">Tips Budidaya</a>
-          </li><li class="nav-item">
+          </li>
+          <li class="nav-item">
             <a href="<?php echo base_url('Layanan_keuangan') ?>" class="nav-link" style="color: black;">Layanan Keuangan</a>
-          </li><li class="nav-item">
+          </li>
+          <li class="nav-item">
             <a href="<?php echo base_url('Info_pasar') ?>" class="nav-link" style="color: black;">Info Pasar</a>
           </li>
           <li class="nav-item">

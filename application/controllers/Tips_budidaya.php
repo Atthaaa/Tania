@@ -21,4 +21,35 @@ class Tips_budidaya extends CI_Controller
     $this->load->view('tips_budidaya', $data);
     $this->load->view('footer');
   }
+
+  public function pencarian()
+  { 
+    $this->load->model('Mtips_budidaya');
+    // Ambil query pencarian dari input
+    $query = $this->input->get('query');
+
+    // Jika query kosong, tampilkan semua layanan keuangan
+    if (empty($query)) {
+        $tips_budidaya = $this->Mtips_budidaya->tampil();
+    } else {
+        // Cari layanan keuangan berdasarkan judul
+        $tips_budidaya = $this->Mtips_budidaya->cari_tips_budidaya($query);
+    }
+
+    // Kirim data layanan keuangan ke view
+    $data['tips_budidaya'] = $tips_budidaya;
+    $this->load->view('header');
+    $this->load->view('tips_budidaya', $data);
+    $this->load->view('footer');
+  }
+
+  function detail($id_tips_budidaya)
+    {
+        $this->load->model('Mtips_budidaya');
+        $data['tips_budidaya'] = $this->Mtips_budidaya->detail_umum($id_tips_budidaya);
+
+        $this->load->view('header');
+        $this->load->view('tips_budidaya_artikel', $data);
+        $this->load->view('footer');
+    }
 }

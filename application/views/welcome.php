@@ -29,18 +29,24 @@
     <div class="row">
       <?php foreach ($tips_budidaya as $key => $value) : ?>
       <div class="col-md-3">
-        <a href="<?= base_url('tips_budidaya' . $value['id_tips_budidaya']); ?>" class="text-decoration-none">
+        <a href="<?= base_url('tips_budidaya/' . $value['id_tips_budidaya']); ?>" class="text-decoration-none">
           <div class="card mb-3 border-0 shadow">
-            <img src="<?php echo $this->config->item('url_tips_budidaya') . $value['gambar_tips_budidaya'] ?>" alt="">
+            <img src="<?php echo $this->config->item('url_tips_budidaya') . $value['gambar_tips_budidaya']; ?>" alt="">
             <div class="card-body text-center">
-              <h6><?php echo $value['judul_tips_budidaya'] ?></h6>
+              <h6><?php echo $value['judul_tips_budidaya']; ?></h6>
             </div>
           </div>
         </a>
       </div>
       <?php endforeach; ?>
     </div>
+     <div class="text-end mt-4">
+      <a href="<?= base_url('tips_budidaya'); ?>" class="btn btn-primary">Lihat Semua</a>
+    </div>
+
   </div>
+</section>
+
 
 <section class="bg-light py-5">
   <div class="container">
@@ -59,7 +65,11 @@
       </div>
       <?php endforeach; ?>
     </div>
+     <div class="text-end mt-4">
+      <a href="<?= base_url('layanan_keuangan'); ?>" class="btn btn-primary">Lihat Semua</a>
+    </div>
   </div>
+</section>
 
 <!-- </section><section class="bg-light py-5"> -->
   <div class="container">
@@ -84,26 +94,35 @@
       </div>
       <?php endforeach; ?>
     </div>
+     <div class="text-end mt-4">
+      <a href="<?= base_url('info_pasar'); ?>" class="btn btn-primary">Lihat Semua</a>
+    </div>
   </div>
+</section>
 
-</section><section class="bg-light py-5">
+<section class="bg-light py-5">
   <div class="container">
-    <h5 class="text-center mb-5">Hama dan Penkit</h5>
+    <h5 class="text-center mb-5">Hama dan Penyakit</h5>
     <div class="row">
-      <?php foreach ($hama_penyakit as $key => $value) : ?>
+      <?php foreach ($hama_penyakit as $value) : ?>
       <div class="col-md-3">
-        <a href="<?= base_url('hama_penyakit' . $value['id_hama_penyakit']); ?>" class="text-decoration-none">
+        <a href="<?= base_url('hama_penyakit/artikel/' . $value['id_hama_penyakit']); ?>" class="text-decoration-none">
           <div class="card mb-3 border-0 shadow">
-            <img src="<?php echo $this->config->item('url_hama_penyakit') . $value['gambar_hama_penyakit'] ?>" alt="">
+            <img src="<?php echo $this->config->item('url_hama_penyakit') . $value['gambar_hama_penyakit']; ?>" alt="" class="img-fluid">
             <div class="card-body text-center">
-              <h6><?php echo $value['judul_hama_penyakit'] ?></h6>
+              <h6><?php echo $value['judul_hama_penyakit']; ?></h6>
             </div>
           </div>
         </a>
       </div>
       <?php endforeach; ?>
     </div>
+    <!-- Tombol "Lihat Semua" -->
+    <div class="text-center mt-4">
+      <a href="<?= base_url('hama_penyakit'); ?>" class="btn btn-primary">Lihat Semua</a>
+    </div>
   </div>
 </section>
 
-<iframe ></iframe>
+
+</section>

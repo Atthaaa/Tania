@@ -4,12 +4,19 @@ class Mlayanan_keuangan extends CI_Model
 
     function tampil_layanankeuangan_terbaru()
     {
-        $this->db->order_by('id_layanan_keuangan', 'desc');
-        $q = $this->db->get('layanan_keuangan');
-        $this->db->get('layanan_keuangan', 4, 0);
-        $d = $q->result_array();
+    // Urutkan berdasarkan ID secara descending agar data terbaru berada di atas
+    $this->db->order_by('id_layanan_keuangan', 'DESC');
+    
+    // Batasi hasil query hanya 4 item
+    $this->db->limit(4);
+    
+    // Ambil data dari tabel
+    $q = $this->db->get('layanan_keuangan');
+    
+    // Pecah data menjadi array
+    $d = $q->result_array();
 
-        return $d;
+    return $d;
     }
 
     function tampil()
@@ -24,15 +31,6 @@ class Mlayanan_keuangan extends CI_Model
         return $d;
     }
 
-    function detail($id_kategori)
-    {
-        // Select * from kategori where id_kategori = 4
-        $this->db->where('id_kategori', $id_kategori);
-        $q = $this->db->get('kategori');
-        $d = $q->row_array();
-
-        return $d;
-    }
 
    public function cari_layanan_keuangan($query)
     {

@@ -6,12 +6,19 @@ class Minfo_pasar extends CI_Model
 
     function tampil_infopasar_terbaru()
     {
-        $this->db->order_by('id_info_pasar', 'desc');
-        $q = $this->db->get('info_pasar');
-        $this->db->get('info_pasar', 4, 0);
-        $d = $q->result_array();
+    // Urutkan berdasarkan ID secara descending agar data terbaru berada di atas
+    $this->db->order_by('id_info_pasar', 'DESC');
+    
+    // Batasi hasil query hanya 4 item
+    $this->db->limit(4);
+    
+    // Ambil data dari tabel
+    $q = $this->db->get('info_pasar');
+    
+    // Pecah data menjadi array
+    $d = $q->result_array();
 
-        return $d;
+    return $d;
     }
 
     function tampil()
@@ -21,21 +28,12 @@ class Minfo_pasar extends CI_Model
         return $d;
     }
 
-    function detail($id_transaksi)
+    public function cari_info_pasar($query)
     {
-        $this->db->where('id_transaksi', $id_transaksi);
-        $q = $this->db->get('transaksi');
-        $d = $q->row_array();
-
-        return $d;
+    // Query untuk mencari layanan keuangan berdasarkan judul
+    $this->db->like('judul_info_pasar', $query);
+    $query = $this->db->get('info_pasar');
+    return $query->result_array();
     }
 
-    function transaksi_detail($id_transaksi)
-    {
-        $this->db->where('id_transaksi', $id_transaksi);
-        $q = $this->db->get('transaksi_detail');
-        $d = $q->result_array();
-
-        return $d;
-    }
 }

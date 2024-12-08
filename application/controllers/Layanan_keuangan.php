@@ -23,7 +23,7 @@ class Layanan_keuangan extends CI_Controller
   }
 
   public function pencarian()
-{ 
+  { 
     $this->load->model('Mlayanan_keuangan');
     // Ambil query pencarian dari input
     $query = $this->input->get('query');
@@ -41,6 +41,6 @@ class Layanan_keuangan extends CI_Controller
     $this->load->view('header');
     $this->load->view('layanan_keuangan', $data);
     $this->load->view('footer');
-}
+  }
 
 }

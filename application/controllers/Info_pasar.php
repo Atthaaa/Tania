@@ -21,4 +21,25 @@ class Info_pasar extends CI_Controller
     $this->load->view('info_pasar', $data);
     $this->load->view('footer');
   }
+
+  public function pencarian()
+  { 
+    $this->load->model('Minfo_pasar');
+    // Ambil query pencarian dari input
+    $query = $this->input->get('query');
+
+    // Jika query kosong, tampilkan semua layanan keuangan
+    if (empty($query)) {
+        $info_pasar = $this->Minfo_pasar->tampil();
+    } else {
+        // Cari layanan keuangan berdasarkan judul
+        $info_pasar = $this->Minfo_pasar->cari_info_pasar($query);
+    }
+
+    // Kirim data layanan keuangan ke view
+    $data['info_pasar'] = $info_pasar;
+    $this->load->view('header');
+    $this->load->view('info_pasar', $data);
+    $this->load->view('footer');
+  }
 }

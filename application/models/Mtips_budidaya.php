@@ -11,33 +11,27 @@ class Mtips_budidaya extends CI_Model
 
     function tampil_tipsbudidaya_terbaru()
     {
-        $this->db->order_by('id_tips_budidaya', 'desc');
-        $q = $this->db->get('tips_budidaya');
-        $this->db->get('tips_budidaya', 4, 0);
-        $d = $q->result_array();
+    // Urutkan berdasarkan ID secara descending agar data terbaru berada di atas
+    $this->db->order_by('id_tips_budidaya', 'DESC');
+    
+    // Batasi hasil query hanya 4 item
+    $this->db->limit(4);
+    
+    // Ambil data dari tabel
+    $q = $this->db->get('tips_budidaya');
+    
+    // Pecah data menjadi array
+    $d = $q->result_array();
 
-        return $d;
+    return $d;
     }
 
-    function detail($id_produk)
+    public function cari_tips_budidaya($query)
     {
-        // Detail sesuai produk dengan id yang login
-        $this->db->where('id_member', $this->session->userdata('id_member'));
-        $this->db->where('id_produk', $id_produk);
-        $this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left');
-        $q = $this->db->get('produk');
-        $d = $q->row_array();
-
-        return $d;
+    // Query untuk mencari layanan keuangan berdasarkan judul
+    $this->db->like('judul_tips_budidaya', $query);
+    $query = $this->db->get('tips_budidaya');
+    return $query->result_array();
     }
 
-    function detail_umum($id_produk)
-    {
-        $this->db->where('id_produk', $id_produk);
-        $this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left');
-        $q = $this->db->get('produk');
-        $d = $q->row_array();
-
-        return $d;
-    }
 }
