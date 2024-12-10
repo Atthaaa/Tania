@@ -1,3 +1,7 @@
+<div class="container text-center">
+  <h1>Cari Informasi Pertanian Disini</h1>
+  <h5>Simak artikel terbaru dan berbagai keseruan Tania dalam membangun ekosistem pertanian yang kuat.</h5>
+</div>
 <div class="container my-5">
   <div id="carouselExampleCaptions" class="carousel slide">
   <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
@@ -34,6 +38,7 @@
             <img src="<?php echo $this->config->item('url_tips_budidaya') . $value['gambar_tips_budidaya']; ?>" alt="">
             <div class="card-body text-center">
               <h6><?php echo $value['judul_tips_budidaya']; ?></h6>
+              <p><?php echo substr($value['artikel_tips_budidaya'], 0, 50); ?>...</p>
             </div>
           </div>
         </a>
@@ -59,6 +64,7 @@
             <img src="<?php echo $this->config->item('url_layanan_keuangan') . $value['gambar_layanan_keuangan'] ?>" alt="">
             <div class="card-body text-center">
               <h6><?php echo $value['judul_layanan_keuangan'] ?></h6>
+              <p><?php echo substr($value['artikel_layanan_keuangan'], 0, 50); ?>...</p>
             </div>
           </div>
         </a>
@@ -88,6 +94,7 @@
             <img src="<?php echo $this->config->item('url_info_pasar') . $value['gambar_info_pasar'] ?>" alt="">
             <div class="card-body text-center">
               <h6><?php echo $value['judul_info_pasar'] ?></h6>
+              <p><?php echo substr($value['artikel_informasi_pasar'], 0, 50); ?>...</p>
             </div>
           </div>
         </a>
@@ -111,6 +118,7 @@
             <img src="<?php echo $this->config->item('url_hama_penyakit') . $value['gambar_hama_penyakit']; ?>" alt="" class="img-fluid">
             <div class="card-body text-center">
               <h6><?php echo $value['judul_hama_penyakit']; ?></h6>
+              <p><?php echo substr($value['artikel_hama_penyakit'], 0, 50); ?>...</p>
             </div>
           </div>
         </a>
@@ -118,11 +126,136 @@
       <?php endforeach; ?>
     </div>
     <!-- Tombol "Lihat Semua" -->
-    <div class="text-center mt-4">
+    <div class="text-end mt-4">
       <a href="<?= base_url('hama_penyakit'); ?>" class="btn btn-primary">Lihat Semua</a>
     </div>
   </div>
 </section>
 
+<style>
+  .container.text-center {
+  margin-top: 60px; /* Margin atas */
+  margin-bottom: 60px; /* Margin bawah */
+  padding: 20px; /* Padding tambahan untuk memberi ruang */
+  background-color: #f8f9fa; /* Latar belakang abu-abu terang */
+  border-radius: 10px; /* Membuat sudut melengkung */
+}
 
-</section>
+.container.text-center h1 {
+  font-size: 32px; /* Ukuran besar untuk heading utama */
+  font-weight: bold; /* Teks lebih tebal */
+  color: #2c5d3f; /* Warna hijau gelap */
+  margin-bottom: 10px; /* Jarak antara H1 dan H5 */
+}
+
+.container.text-center h5 {
+  font-size: 18px; /* Ukuran sedang untuk deskripsi */
+  color: #666; /* Warna abu-abu untuk teks sekunder */
+  line-height: 1.6; /* Memberikan jarak antar baris */
+}
+
+ /* General Styling for Article Section */
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0px; /* Jarak antar kartu disempitkan menjadi sekitar 0.5 cm */
+  margin: 0;
+}
+
+.col-md-3 {
+  flex: 0 0 25%; /* Agar tetap empat kartu dalam satu baris */
+  max-width: 25%;
+}
+
+@media (max-width: 768px) {
+  .col-md-3 {
+    flex: 0 0 48%; /* Dua kartu di layar tablet */
+    max-width: 48%;
+  }
+}
+
+@media (max-width: 576px) {
+  .col-md-3 {
+    flex: 0 0 100%; /* Satu kartu per baris di layar kecil */
+    max-width: 100%;
+  }
+}
+
+/* Card Styling */
+.card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 220px; /* Gambar diperbesar */
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 10px; /* Padding diperkecil */
+  text-align: left;
+}
+
+.card-body h6 {
+  font-size: 16px; /* Ukuran judul tetap */
+  font-weight: bold;
+  color: #2c5d3f;
+  margin-bottom: 8px;
+}
+
+.card-body p {
+  font-size: 13px; /* Ukuran teks deskripsi */
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* Metadata (Tanggal dan View Count) */
+.card-body .metadata {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #888;
+}
+
+.card-body .metadata .date {
+  font-style: italic;
+}
+
+.card-body .metadata .views {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-body .metadata .views i {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Button (Lihat Semua) */
+.text-end .btn-primary {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.text-end .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+</style>

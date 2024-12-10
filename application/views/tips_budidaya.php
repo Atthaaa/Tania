@@ -36,11 +36,12 @@
     <div class="row">
       <?php foreach ($tips_budidaya as $key => $value) : ?>
       <div class="col-md-3">
-        <a href="<?= base_url('tips_budidaya' . $value['id_tips_budidaya']); ?>" class="text-decoration-none">
+        <a href="<?= base_url('tips_budidaya/artikel/' . $value['id_tips_budidaya']); ?>" class="text-decoration-none">
           <div class="card mb-3 border-0 shadow">
             <img src="<?php echo $this->config->item('url_tips_budidaya') . $value['gambar_tips_budidaya'] ?>" alt="">
             <div class="card-body text-center">
               <h6><?php echo $value['judul_tips_budidaya'] ?></h6>
+              <p><?php echo substr($value['artikel_tips_budidaya'], 0, 50); ?>...</p>
             </div>
           </div>
         </a>
