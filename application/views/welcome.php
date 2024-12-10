@@ -29,7 +29,7 @@
     <div class="row">
       <?php foreach ($tips_budidaya as $key => $value) : ?>
       <div class="col-md-3">
-        <a href="<?= base_url('tips_budidaya/' . $value['id_tips_budidaya']); ?>" class="text-decoration-none">
+        <a href="<?= base_url('tips_budidaya/artikel/' . $value['id_tips_budidaya']); ?>" class="text-decoration-none">
           <div class="card mb-3 border-0 shadow">
             <img src="<?php echo $this->config->item('url_tips_budidaya') . $value['gambar_tips_budidaya']; ?>" alt="">
             <div class="card-body text-center">
@@ -54,7 +54,7 @@
     <div class="row">
       <?php foreach ($layanan_keuangan as $key => $value) : ?>
       <div class="col-md-3">
-        <a href="<?= base_url('layanan_keuangan' . $value['id_layanan_keuangan']); ?>" class="text-decoration-none">
+        <a href="<?= base_url('layanan_keuangan/artikel/' . $value['id_layanan_keuangan']); ?>" class="text-decoration-none">
           <div class="card mb-3 border-0 shadow">
             <img src="<?php echo $this->config->item('url_layanan_keuangan') . $value['gambar_layanan_keuangan'] ?>" alt="">
             <div class="card-body text-center">
@@ -83,7 +83,7 @@
     <div class="row">
       <?php foreach ($info_pasar as $key => $value) : ?>
       <div class="col-md-3">
-        <a href="<?= base_url('info_pasar' . $value['id_info_pasar']); ?>" class="text-decoration-none">
+        <a href="<?= base_url('info_pasar/artikel/' . $value['id_info_pasar']); ?>" class="text-decoration-none">
           <div class="card mb-3 border-0 shadow">
             <img src="<?php echo $this->config->item('url_info_pasar') . $value['gambar_info_pasar'] ?>" alt="">
             <div class="card-body text-center">

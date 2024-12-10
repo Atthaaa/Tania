@@ -34,4 +34,11 @@ class Mtips_budidaya extends CI_Model
     return $query->result_array();
     }
 
+    public function artikel_tipsbudidaya($id_tips_budidaya)
+    {
+    $this->db->where('id_tips_budidaya', $id_tips_budidaya);
+    $query = $this->db->get('tips_budidaya');
+    return $query->row_array();
+    }
+
 }

@@ -22,6 +22,18 @@ class Info_pasar extends CI_Controller
     $this->load->view('footer');
   }
 
+   // Fungsi untuk menampilkan detail hama penyakit berdasarkan ID
+    public function artikel($id_info_pasar)
+    {
+
+    $this->load->model('Minfo_pasar');
+    $data['info_pasar'] = $this->Minfo_pasar->artikel_infopasar($id_info_pasar);
+
+    $this->load->view('header');
+    $this->load->view('info_pasar_artikel', $data);
+    $this->load->view('footer');
+    }
+
   public function pencarian()
   { 
     $this->load->model('Minfo_pasar');

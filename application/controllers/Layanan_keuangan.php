@@ -22,6 +22,18 @@ class Layanan_keuangan extends CI_Controller
     $this->load->view('footer');
   }
 
+   // Fungsi untuk menampilkan detail hama penyakit berdasarkan ID
+    public function artikel($id_layanan_keuangan)
+    {
+
+    $this->load->model('Mlayanan_keuangan');
+    $data['layanan_keuangan'] = $this->Mlayanan_keuangan->artikel_layanankeuangan($id_layanan_keuangan);
+
+    $this->load->view('header');
+    $this->load->view('layanan_keuangan_artikel', $data);
+    $this->load->view('footer');
+    }
+
   public function pencarian()
   { 
     $this->load->model('Mlayanan_keuangan');

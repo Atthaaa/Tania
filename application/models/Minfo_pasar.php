@@ -36,4 +36,11 @@ class Minfo_pasar extends CI_Model
     return $query->result_array();
     }
 
+    public function artikel_infopasar($id_info_pasar)
+    {
+    $this->db->where('id_info_pasar', $id_info_pasar);
+    $query = $this->db->get('info_pasar');
+    return $query->row_array();
+    }
+
 }

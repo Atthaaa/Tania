@@ -22,6 +22,18 @@ class Tips_budidaya extends CI_Controller
     $this->load->view('footer');
   }
 
+   // Fungsi untuk menampilkan detail hama penyakit berdasarkan ID
+    public function artikel($id_tips_budidaya)
+    {
+
+    $this->load->model('Mtips_budidaya');
+    $data['tips_budidaya'] = $this->Mtips_budidaya->artikel_tipsbudidaya($id_tips_budidaya);
+
+    $this->load->view('header');
+    $this->load->view('tips_budidaya_artikel', $data);
+    $this->load->view('footer');
+    }
+
   public function pencarian()
   { 
     $this->load->model('Mtips_budidaya');
