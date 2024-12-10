@@ -55,4 +55,5 @@ class Hama_penyakit extends CI_Controller
     $this->load->view('hama_penyakit', $data);
     $this->load->view('footer');
   }
+
 }
