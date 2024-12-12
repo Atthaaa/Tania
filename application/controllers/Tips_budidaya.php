@@ -29,6 +29,8 @@ class Tips_budidaya extends CI_Controller
     $this->load->model('Mtips_budidaya');
     $data['tips_budidaya'] = $this->Mtips_budidaya->artikel_tipsbudidaya($id_tips_budidaya);
 
+    $data['rekomendasi'] = $this->Mtips_budidaya->rekomendasi($id_tips_budidaya);
+
     $this->load->view('header');
     $this->load->view('tips_budidaya_artikel', $data);
     $this->load->view('footer');
