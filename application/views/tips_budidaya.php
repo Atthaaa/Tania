@@ -1,8 +1,8 @@
-<section class="bg-light py-5">
+<section class="py-5">
   <div class="container">
     <h5 class="text-center mb-5">Tips Budidaya</h5>
 
-     <section class="bg-light py-5">
+     <section class="py-5">
       <div class="container">
         <!-- Search Bar -->
         <form action="<?= base_url('tips_budidaya/pencarian'); ?>" method="GET" class="mb-4">

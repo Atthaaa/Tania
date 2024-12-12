@@ -134,23 +134,21 @@
 
 <style>
   .container.text-center {
-  margin-top: 60px; /* Margin atas */
+  margin-top: 50px; /* Margin atas */
   margin-bottom: 60px; /* Margin bawah */
   padding: 20px; /* Padding tambahan untuk memberi ruang */
-  background-color: #f8f9fa; /* Latar belakang abu-abu terang */
-  border-radius: 10px; /* Membuat sudut melengkung */
 }
 
 .container.text-center h1 {
   font-size: 32px; /* Ukuran besar untuk heading utama */
   font-weight: bold; /* Teks lebih tebal */
-  color: #2c5d3f; /* Warna hijau gelap */
+  color: #ffffff; /* Warna hijau gelap */
   margin-bottom: 10px; /* Jarak antara H1 dan H5 */
 }
 
 .container.text-center h5 {
   font-size: 18px; /* Ukuran sedang untuk deskripsi */
-  color: #666; /* Warna abu-abu untuk teks sekunder */
+  color: #ffffff; /* Warna abu-abu untuk teks sekunder */
   line-height: 1.6; /* Memberikan jarak antar baris */
 }
 

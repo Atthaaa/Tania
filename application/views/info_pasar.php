@@ -1,8 +1,9 @@
-<section class="bg-light py-5">
+<body>
+  <section class="py-5">
   <div class="container">
     <h5 class="text-center mb-5">Info Pasar</h5>
 
-     <section class="bg-light py-5">
+     <section class="py-5">
       <div class="container">
         <!-- Search Bar -->
         <form action="<?= base_url('info_pasar/pencarian'); ?>" method="GET" class="mb-4">
@@ -49,3 +50,4 @@
       <?php endforeach; ?>
     </div>
   </div>
+</body>
