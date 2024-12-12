@@ -3,7 +3,7 @@
 
   <form method="post" enctype="multipart/form-data">
     <div class="mb-3">
-      <label>Judul Tips budidaa</label>
+      <label>Judul Tips budidaya</label>
       <input type="text" name="judul_tips_budidaya" id=""
         value="<?php echo set_value("artikel_tips_budidaya", $tips_budidaya['judul_tips_budidaya']) ?>" class="form-control">
       <span class="text-danger small">

@@ -2,7 +2,20 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Mhama_penyakit extends CI_Model
-{
+{   
+
+    function tampil()
+    {
+
+        //melakukan query
+        $q = $this->db->get("hama_penyakit");
+
+        //wajib kita pecah ke array
+        $d = $q->result_array();
+
+        return $d;
+    }
+
     function tampil_hamapenyakit_terbaru()
     {
     // Urutkan berdasarkan ID secara descending agar data terbaru berada di atas
@@ -21,16 +34,11 @@ class Mhama_penyakit extends CI_Model
     }
 
 
-    function tampil()
+    public function artikel_hamapenyakit($id_hama_penyakit)
     {
-
-        //melakukan query
-        $q = $this->db->get("hama_penyakit");
-
-        //wajib kita pecah ke array
-        $d = $q->result_array();
-
-        return $d;
+        $this->db->where('id_hama_penyakit', $id_hama_penyakit);
+        $query = $this->db->get('hama_penyakit');
+        return $query->row_array();
     }
 
     public function cari_hama_penyakit($query)
@@ -41,12 +49,40 @@ class Mhama_penyakit extends CI_Model
     return $query->result_array();
     }
 
-    public function artikel_hamapenyakit($id_hama_penyakit)
+    public function rekomendasi($id_hama_penyakit, $limit = 5)
     {
+    // Ambil artikel yang akan dijadikan basis rekomendasi
     $this->db->where('id_hama_penyakit', $id_hama_penyakit);
-    $query = $this->db->get('hama_penyakit');
-    return $query->row_array();
+    $basis = $this->db->get('hama_penyakit')->row_array();
+
+    // Ambil semua artikel kecuali artikel yang dijadikan basis
+    $this->db->where('id_hama_penyakit !=', $id_hama_penyakit);
+    $semua_artikel = $this->db->get('hama_penyakit')->result_array();
+
+    $rekomendasi = [];
+    foreach ($semua_artikel as $artikel) {
+        // Hitung cosine similarity antara basis dan artikel lainnya
+        $similarity = $this->cosine_similarity($basis['artikel_hama_penyakit'], $artikel['artikel_hama_penyakit']);
+        $artikel['nilai_similarity'] = $similarity;
+        $rekomendasi[] = $artikel;
     }
 
+    // Urutkan berdasarkan nilai similarity tertinggi
+    usort($rekomendasi, function ($a, $b) {
+        return $b['nilai_similarity'] <=> $a['nilai_similarity'];
+    });
 
+    // Batasi jumlah hasil rekomendasi
+    return array_slice($rekomendasi, 0, $limit);
+    }
+
+// Fungsi untuk menghitung cosine similarity
+    private function cosine_similarity($text1, $text2)
+    {
+    $words1 = explode(' ', strtolower($text1));
+    $words2 = explode(' ', strtolower($text2));
+    $intersect = array_intersect($words1, $words2);
+    $similarity = count($intersect) / (sqrt(count($words1) * count($words2)));
+    return round($similarity, 2);
+    }
 }

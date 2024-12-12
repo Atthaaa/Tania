@@ -29,6 +29,9 @@ class Layanan_keuangan extends CI_Controller
     $this->load->model('Mlayanan_keuangan');
     $data['layanan_keuangan'] = $this->Mlayanan_keuangan->artikel_layanankeuangan($id_layanan_keuangan);
 
+    $data['rekomendasi'] = $this->Mlayanan_keuangan->rekomendasi($id_layanan_keuangan);
+
+
     $this->load->view('header');
     $this->load->view('layanan_keuangan_artikel', $data);
     $this->load->view('footer');
@@ -54,5 +57,15 @@ class Layanan_keuangan extends CI_Controller
     $this->load->view('layanan_keuangan', $data);
     $this->load->view('footer');
   }
+
+  function detail($id_layanan_keuangan)
+    {
+        $this->load->model('Mlayanan_keuangan');
+        $data['layanan_keuangan'] = $this->Mlayanan_keuangan->detail_umum($id_layanan_keuangan);
+
+        $this->load->view('header');
+        $this->load->view('layanan_keuangan_artikel', $data);
+        $this->load->view('footer');
+    }
 
 }

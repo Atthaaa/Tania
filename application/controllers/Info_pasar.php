@@ -29,6 +29,8 @@ class Info_pasar extends CI_Controller
     $this->load->model('Minfo_pasar');
     $data['info_pasar'] = $this->Minfo_pasar->artikel_infopasar($id_info_pasar);
 
+    $data['rekomendasi'] = $this->Minfo_pasar->rekomendasi($id_info_pasar);
+
     $this->load->view('header');
     $this->load->view('info_pasar_artikel', $data);
     $this->load->view('footer');
@@ -54,4 +56,14 @@ class Info_pasar extends CI_Controller
     $this->load->view('info_pasar', $data);
     $this->load->view('footer');
   }
+
+  function detail($id_info_pasar)
+    {
+        $this->load->model('Minfo_pasar');
+        $data['info_pasar'] = $this->Minfo_pasar->detail_umum($id_info_pasar);
+
+        $this->load->view('header');
+        $this->load->view('info_pasar_artikel', $data);
+        $this->load->view('footer');
+    }
 }

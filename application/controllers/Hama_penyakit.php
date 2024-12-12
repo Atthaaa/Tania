@@ -8,35 +8,36 @@ class Hama_penyakit extends CI_Controller
         if (!$this->session->userdata('id_pengguna')) {
             redirect('/', 'refresh');
         }
+        $this->load->model('Mhama_penyakit');
     }
-    function index()
+    public function index()
     {
 
-        //panggil model Mproduk dan fungsi tampil()
-        
-        $this->load->model('Mhama_penyakit');
-        $data['hama_penyakit'] = $this->Mhama_penyakit->tampil();
+    //panggil model Mproduk dan fungsi getAllHamaPenyakit()
+    $this->load->model('Mhama_penyakit');
+    $data['hama_penyakit'] = $this->Mhama_penyakit->tampil();
 
-        $this->load->view('header');
-        $this->load->view('hama_penyakit', $data);
-        $this->load->view('footer');
+    $this->load->view('header');
+    $this->load->view('hama_penyakit', $data);
+    $this->load->view('footer');
     }
 
      // Fungsi untuk menampilkan detail hama penyakit berdasarkan ID
-    public function artikel($id_hama_penyakit)
+    function artikel($id_hama_penyakit)
     {
 
     $this->load->model('Mhama_penyakit');
     $data['hama_penyakit'] = $this->Mhama_penyakit->artikel_hamapenyakit($id_hama_penyakit);
+
+    $data['rekomendasi'] = $this->Mhama_penyakit->rekomendasi($id_hama_penyakit);
 
     $this->load->view('header');
     $this->load->view('hama_penyakit_artikel', $data);
     $this->load->view('footer');
     }
 
-
-    public function pencarian()
-  { 
+    function pencarian()
+    { 
     $this->load->model('Mhama_penyakit');
     // Ambil query pencarian dari input
     $query = $this->input->get('query');
@@ -55,5 +56,15 @@ class Hama_penyakit extends CI_Controller
     $this->load->view('hama_penyakit', $data);
     $this->load->view('footer');
   }
+
+   function detail($id_hama_penyakit)
+    {
+        $this->load->model('Mhama_penyakit');
+        $data['hama_penyakit'] = $this->Mhama_penyakit->detail_umum($id_hama_penyakit);
+
+        $this->load->view('header');
+        $this->load->view('hama_penyakit_artikel', $data);
+        $this->load->view('footer');
+    }
 
 }

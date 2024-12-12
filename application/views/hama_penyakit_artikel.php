@@ -7,18 +7,19 @@
         <p><?php echo nl2br($hama_penyakit['artikel_hama_penyakit']); ?></p>
     </div>
 </div>
-<div class="container">
-        <h1>Rekomendasi Artikel Hama & Penyakit</h1>
-
-        <?php if (!empty($rekomendasi)): ?>
-            <?php foreach ($rekomendasi as $item): ?>
-                <div class="artikel">
-                    <h2><?= htmlspecialchars($item['artikel']['judul_hama_penyakit']) ?></h2>
-                    <p><?= htmlspecialchars(substr($item['artikel']['artikel_hama_penyakit'], 0, 150)) ?>...</p>
-                    <p class="similaritas">Similaritas: <?= number_format($item['similaritas'], 2) ?></p>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>Tidak ada rekomendasi yang tersedia untuk artikel ini.</p>
-        <?php endif; ?>
+<h4>Rekomendasi Hama Penyakit Lainnya</h4>
+    <div class="row">
+      <?php foreach ($rekomendasi as $rekom) : ?>
+      <div class="col-md-3">
+        <a href="<?= base_url('hama_penyakit/artikel/' . $rekom['id_hama_penyakit']); ?>" class="text-decoration-none">
+          <div class="card mb-3 border-0 shadow">
+            <img src="<?php echo $this->config->item('url_hama_penyakit') . $rekom['gambar_hama_penyakit'] ?>" alt="">
+            <div class="card-body text-center">
+              <h6><?php echo $rekom['judul_hama_penyakit'] ?></h6>
+              <p><?php echo substr($rekom['artikel_hama_penyakit'], 0, 50); ?>...</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <?php endforeach; ?>
     </div>
