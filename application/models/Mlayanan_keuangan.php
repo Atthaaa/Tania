@@ -8,7 +8,7 @@ class Mlayanan_keuangan extends CI_Model
     $this->db->order_by('id_layanan_keuangan', 'DESC');
     
     // Batasi hasil query hanya 4 item
-    $this->db->limit(4);
+    $this->db->limit(3);
     
     // Ambil data dari tabel
     $q = $this->db->get('layanan_keuangan');

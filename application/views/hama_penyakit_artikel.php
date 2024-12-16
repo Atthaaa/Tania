@@ -7,7 +7,6 @@
     <div>
         <p><?php echo nl2br($hama_penyakit['artikel_hama_penyakit']); ?></p>
     </div>
-</div>
 <h4>Rekomendasi Hama Penyakit Lainnya</h4>
     <div class="row">
       <?php foreach ($rekomendasi as $rekom) : ?>
@@ -17,11 +16,12 @@
             <img src="<?php echo $this->config->item('url_hama_penyakit') . $rekom['gambar_hama_penyakit'] ?>" alt="">
             <div class="card-body text-center">
               <h6><?php echo $rekom['judul_hama_penyakit'] ?></h6>
-              <p><?php echo substr($rekom['artikel_hama_penyakit'], 0, 50); ?>...</p>
+              <p><?php echo substr($rekom['artikel_hama_penyakit'], 0, 100); ?>...</p>
             </div>
           </div>
         </a>
       </div>
       <?php endforeach; ?>
+    </div>
     </div>
 </body>

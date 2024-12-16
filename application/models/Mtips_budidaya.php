@@ -15,7 +15,7 @@ class Mtips_budidaya extends CI_Model
     $this->db->order_by('id_tips_budidaya', 'DESC');
     
     // Batasi hasil query hanya 4 item
-    $this->db->limit(4);
+    $this->db->limit(3);
     
     // Ambil data dari tabel
     $q = $this->db->get('tips_budidaya');

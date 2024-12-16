@@ -22,7 +22,7 @@ class Mhama_penyakit extends CI_Model
     $this->db->order_by('id_hama_penyakit', 'DESC');
     
     // Batasi hasil query hanya 4 item
-    $this->db->limit(4);
+    $this->db->limit(3);
     
     // Ambil data dari tabel
     $q = $this->db->get('hama_penyakit');
