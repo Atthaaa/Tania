@@ -1,5 +1,10 @@
   <style>
-  /* Container for the search bar */
+.container {
+    max-width: 1350px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
 /* Container for the search bar */
 .search-container {
   display: flex;
@@ -118,14 +123,14 @@
 }
 
 .card-body h6 {
-  font-size: 16px; /* Ukuran judul tetap */
+  font-size: 20px; /* Ukuran judul tetap */
   font-weight: bold;
   color: #2c5d3f;
   margin-bottom: 8px;
 }
 
 .card-body p {
-  font-size: 12px; /* Ukuran teks deskripsi */
+  font-size: 14px; /* Ukuran teks deskripsi */
   color: #666;
   line-height: 1.5;
   margin-bottom: 10px;
@@ -243,9 +248,9 @@ h5::after {
         <a href="<?= base_url('layanan_keuangan/artikel/' . $value['id_layanan_keuangan']); ?>" class="text-decoration-none">
           <div class="card mb-3 border-0 shadow">
             <img src="<?php echo $this->config->item('url_layanan_keuangan') . $value['gambar_layanan_keuangan'] ?>" alt="">
-            <div class="card-body text-center">
+            <div class="card-body text-start">
               <h6><?php echo $value['judul_layanan_keuangan'] ?></h6>
-              <p><?php echo substr($value['artikel_layanan_keuangan'], 0, 50); ?>...</p>
+              <p><?php echo substr($value['artikel_layanan_keuangan'], 0, 150); ?>...</p>
             </div>
           </div>
         </a>

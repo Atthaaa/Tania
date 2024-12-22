@@ -47,7 +47,7 @@ class Mlayanan_keuangan extends CI_Model
     return $query->row_array();
     }
 
-    public function rekomendasi($id_layanan_keuangan, $limit = 5)
+    public function rekomendasi($id_layanan_keuangan, $limit = 3)
     {
     // Ambil artikel yang akan dijadikan basis rekomendasi
     $this->db->where('id_layanan_keuangan', $id_layanan_keuangan);

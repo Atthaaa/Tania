@@ -298,7 +298,9 @@
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiar">
   <div class="container">
-    <img src="<?php echo base_url('./assets/logo_tania.png')?>" class="navbar-logo">
+    <a href="<?php echo base_url('') ?>" class="nav-link">
+      <img src="<?php echo base_url('./assets/logo_tania.png')?>" class="navbar-logo">
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -328,27 +330,28 @@
         </li>
       </ul>
        <!-- Login dan Logout -->
+       <ul class="navbar-nav ms-auto">
         <?php if ($this->session->userdata('id_pengguna')) : ?>
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a href="#" class="nav-link"><?php echo $this->session->userdata("Nama") ?></a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url('logout') ?>" class="nav-link">Logout</a>
-            </li>
-          </ul>
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link"><?php echo $this->session->userdata("Nama") ?></a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('logout') ?>" class="nav-link">Logout</a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link">
+              <a href="<?php echo base_url('welcome/edit') ?>" class="fa-regular fa-user"></a>
+            </a>
+          </li>
+        <?php else : ?>
+          <li class="nav-item">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#login" class="nav-link">Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('register') ?>" class="nav-link">Register</a>
+          </li>
         <?php endif; ?>
-
-        <?php if (!$this->session->userdata('id_pengguna')) : ?>
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a href="#" data-bs-toggle="modal" data-bs-target="#login" class="nav-link">Login</a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url('register') ?>" class="nav-link">Register</a>
-            </li>
-          </ul>
-        <?php endif; ?>
+      </ul>
     </div>
   </div>
 </nav>

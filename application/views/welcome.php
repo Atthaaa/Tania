@@ -66,14 +66,14 @@
 }
 
 .card-body h6 {
-  font-size: 16px; /* Ukuran judul tetap */
+  font-size: 20px; /* Ukuran judul tetap */
   font-weight: bold;
   color: #2c5d3f;
   margin-bottom: 8px;
 }
 
 .card-body p {
-  font-size: 12px; /* Ukuran teks deskripsi */
+  font-size: 14px; /* Ukuran teks deskripsi */
   color: #666;
   line-height: 1.5;
   margin-bottom: 10px;
@@ -238,9 +238,9 @@
         <a href="<?= base_url('tips_budidaya/artikel/' . $value['id_tips_budidaya']); ?>" class="text-decoration-none">
           <div class="card mb-3 border-0 shadow">
             <img src="<?php echo $this->config->item('url_tips_budidaya') . $value['gambar_tips_budidaya']; ?>" alt="">
-            <div class="card-body text-center">
+            <div class="card-body text-start">
               <h6><?php echo $value['judul_tips_budidaya']; ?></h6>
-              <p><?php echo substr($value['artikel_tips_budidaya'], 0, 100); ?>...</p>
+              <p><?php echo substr($value['artikel_tips_budidaya'], 0, 150); ?>...</p>
             </div>
           </div>
         </a>
@@ -264,9 +264,9 @@
         <a href="<?= base_url('layanan_keuangan/artikel/' . $value['id_layanan_keuangan']); ?>" class="text-decoration-none">
           <div class="card mb-3 border-0 shadow">
             <img src="<?php echo $this->config->item('url_layanan_keuangan') . $value['gambar_layanan_keuangan'] ?>" alt="">
-            <div class="card-body text-center">
+            <div class="card-body text-start">
               <h6><?php echo $value['judul_layanan_keuangan'] ?></h6>
-              <p><?php echo substr($value['artikel_layanan_keuangan'], 0, 100); ?>...</p>
+              <p><?php echo substr($value['artikel_layanan_keuangan'], 0, 150); ?>...</p>
             </div>
           </div>
         </a>
@@ -297,9 +297,9 @@
         <a href="<?= base_url('info_pasar/artikel/' . $value['id_info_pasar']); ?>" class="text-decoration-none">
           <div class="card mb-3 border-0 shadow">
             <img src="<?php echo $this->config->item('url_info_pasar') . $value['gambar_info_pasar'] ?>" alt="">
-            <div class="card-body text-center">
+            <div class="card-body text-start">
               <h6><?php echo $value['judul_info_pasar'] ?></h6>
-              <p><?php echo substr($value['artikel_informasi_pasar'], 0, 100); ?>...</p>
+              <p><?php echo substr($value['artikel_informasi_pasar'], 0, 150); ?>...</p>
             </div>
           </div>
         </a>
@@ -321,9 +321,9 @@
         <a href="<?= base_url('hama_penyakit/artikel/' . $value['id_hama_penyakit']); ?>" class="text-decoration-none">
           <div class="card mb-3 border-0 shadow">
             <img src="<?php echo $this->config->item('url_hama_penyakit') . $value['gambar_hama_penyakit']; ?>" alt="" class="img-fluid">
-            <div class="card-body text-center">
+            <div class="card-body text-start">
               <h6><?php echo $value['judul_hama_penyakit']; ?></h6>
-              <p><?php echo substr($value['artikel_hama_penyakit'], 0, 100); ?>...</p>
+              <p><?php echo substr($value['artikel_hama_penyakit'], 0, 150); ?>...</p>
             </div>
           </div>
         </a>

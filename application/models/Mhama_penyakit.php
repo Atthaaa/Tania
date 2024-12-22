@@ -49,7 +49,7 @@ class Mhama_penyakit extends CI_Model
     return $query->result_array();
     }
 
-    public function rekomendasi($id_hama_penyakit, $limit = 5)
+    public function rekomendasi($id_hama_penyakit, $limit = 3)
     {
     // Ambil artikel yang akan dijadikan basis rekomendasi
     $this->db->where('id_hama_penyakit', $id_hama_penyakit);
