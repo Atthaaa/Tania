@@ -37,4 +37,29 @@ class Mpengguna extends CI_Model
     $data = $q->result_array();
     return $data;
     }
+
+     function hapus($id_pengguna)
+    {
+
+        // delete from artikel where id_artikel=5
+        $this->db->where('id_pengguna', $id_pengguna);
+        $this->db->delete('pengguna');
+    }
+
+    function edit($inputan, $id_pengguna)
+    {
+        // query update sesuai id_artikel
+        $this->db->where('id_pengguna', $id_pengguna);
+        $this->db->update('pengguna', $inputan);
+    }
+
+    function detail($id_pengguna)
+    {
+        // Select * from artikel where id_artikel = 4
+        $this->db->where('id_pengguna', $id_pengguna);
+        $q = $this->db->get('pengguna');
+        $d = $q->row_array();
+
+        return $d;
+    }
 }

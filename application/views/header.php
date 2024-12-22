@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     body {
-      background:url('./assets/bg-header.svg') no-repeat top;
+      background:url('<?php echo base_url('assets/bg-header.svg') ?>') no-repeat top;
       background-size: 100%;
     }
     .bg-header {

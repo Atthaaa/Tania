@@ -9,6 +9,7 @@
 
 <script src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
 
+
 <script>
 new DataTable('#tabelku')
 </script>

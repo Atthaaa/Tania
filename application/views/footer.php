@@ -83,7 +83,7 @@
 <body>
 <footer>
     <div class="title">
-        <img src="./assets/logo_tania.png">
+        <img src="<?php echo base_url('assets/logo_tania.png') ?>">
     </div>
 
     <div class="navigasi">

@@ -215,13 +215,13 @@ h5::after {
       <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner" style="border-radius: 30px;">
         <div class="carousel-item active">
-          <img src="./assets/slider/s1.jpg" class="d-block w-100" alt="...">
+          <img src="<?php echo base_url('assets/slider/s1.jpg') ?>" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="./assets/slider/s2.jpg" class="d-block w-100" alt="...">
+          <img src="<?php echo base_url('assets/slider/s2.jpg') ?>" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="./assets/slider/s3.jpg" class="d-block w-100" alt="...">
+          <img src="<?php echo base_url('assets/slider/s3.jpg') ?>" class="d-block w-100" alt="...">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">

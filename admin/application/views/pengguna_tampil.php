@@ -11,6 +11,7 @@
                 <th>Username</th>
                 <th>No HP</th>
                 <th>Jenis Kelamin</th>
+                <th>Opsi</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,10 @@
                     <td><?php echo $value['Username'] ?></td>
                     <td><?php echo $value['No_HP'] ?></td>
                     <td><?php echo $value['Jenis_kelamin'] ?></td>
+                    <td>
+                    <a href="<?php echo base_url("pengguna/edit/" . $value["id_pengguna"]) ?>" class="btn btn-warning">Edit</a>
+                    <a href="<?php echo base_url("pengguna/hapus/" . $value["id_pengguna"]) ?>" class="btn btn-danger">Hapus</a>
+                    </td>
                 </tr>
             <?php endforeach ?>
         </tbody>

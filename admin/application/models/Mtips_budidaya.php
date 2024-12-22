@@ -60,10 +60,10 @@ class Mtips_budidaya extends CI_Model
             // Tambahkan 1 ke angka terakhir
             $new_number = $last_number + 1;
             // Format angka menjadi 3 digit dengan prefix 'HP'
-            return 'HP' . str_pad($new_number, 3, '0', STR_PAD_LEFT);
+            return 'TB' . str_pad($new_number, 3, '0', STR_PAD_LEFT);
         } else {
             // Jika tidak ada data, mulai dari HP001
-            return 'HP001';
+            return 'LK001';
         }
     }
 
