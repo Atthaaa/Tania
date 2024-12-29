@@ -192,28 +192,22 @@ h5::after {
     <h5 class="text-center mb-5 mt-5">Hama Penyakit</h5>
 
     <section class="py-5">
-      <div class="container">
+    <div class="container">
         <!-- Search Bar -->
         <form action="<?= base_url('hama_penyakit/pencarian'); ?>" method="GET" class="mb-4">
-          <div class="search-container">
-            <input type="text" name="query" placeholder="Cari Hama Penyakit..." aria-label="Cari Hama Penyakit" 
-              class="search-input">
-            
-            <button type="submit" class="search-button">
-              Cari <i class="bi bi-search" style="margin-left: 5px;"></i>
-            </button>
-            
-            <!-- Tombol Semua -->
-            <a href="<?= base_url('hama_penyakit'); ?>" class="all-button">
-              Semua
-            </a>
-          </div>
+            <div class="search-container">
+                <input type="text" name="query" placeholder="Cari Informasi Pasar..." 
+                       value="<?= htmlspecialchars($query ?? '') ?>" 
+                       aria-label="Cari Tips Budidaya" class="search-input">
+                <button type="submit" class="search-button">
+                    Cari <i class="bi bi-search" style="margin-left: 5px;"></i>
+                </button>
+                <!-- Tombol Semua -->
+                <a href="<?= base_url('hama_penyakit'); ?>" class="all-button">Semua</a>
+            </div>
         </form>
-
-        <!-- Hasil Pencarian akan ditampilkan di sini -->
-        <div id="result"></div>
       </div>
-    </section>
+  </section>
 
     <div class="container my-4">
       <div id="carouselExampleCaptions" class="carousel-slide">
@@ -241,22 +235,27 @@ h5::after {
       </div>
     </div>
 
-    <div class="row">
-      <?php foreach ($hama_penyakit as $key => $value) : ?>
-      <div class="col-md-3">
-        <a href="<?= base_url('hama_penyakit/artikel/' . $value['id_hama_penyakit']); ?>" class="text-decoration-none">
-          <div class="card mb-3 border-0 shadow">
-            <img src="<?php echo $this->config->item('url_hama_penyakit') . $value['gambar_hama_penyakit'] ?>" alt="">
-            <div class="card-body text-start">
-              <h6><?php echo $value['judul_hama_penyakit'] ?></h6>
-              <p><?php echo substr($value['artikel_hama_penyakit'], 0, 150); ?>...</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <?php endforeach; ?>
-    </div>
-  </div> 
+        <div class="row" id="result">
+            <?php if (isset($is_empty) && $is_empty): ?>
+                <h4 class="text-danger text-center">Artikel yang anda cari belum tersedia.</h4>
+            <?php else: ?>
+                <?php foreach ($hama_penyakit as $value): ?>
+                     <div class="col-md-3">
+                      <a href="<?= base_url('hama_penyakit/artikel/' . $value['id_hama_penyakit']); ?>" class="text-decoration-none">
+                        <div class="card mb-3 border-0 shadow">
+                          <img src="<?php echo $this->config->item('url_hama_penyakit') . $value['gambar_hama_penyakit'] ?>" alt="">
+                          <div class="card-body text-start">
+                            <h4><?php echo $value['judul_hama_penyakit'] ?></h4>
+                            <p><?php echo substr($value['artikel_hama_penyakit'], 0, 150); ?>...</p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div> 
+
 
 
 

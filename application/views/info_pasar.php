@@ -186,34 +186,64 @@ h5::after {
   margin-top: 20px; /* Menurunkan posisi row sebesar 20px */
   margin-bottom: 60px;
 }
+
+/* Membatasi ukuran iframe agar sesuai dengan tabel */
+.table-container {
+    width: 89%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center; /* Posisi horizontal di tengah */
+    margin: 0 auto; /* Memastikan elemen terpusat */
+}
+
+
+.no-scroll {
+    width: 89%; /* Lebar penuh */
+    height: 330px; /* Atur tinggi sesuai tabel */
+    border: none;
+    pointer-events: none; /* Mencegah interaksi pengguna */
+}
+
+.overlay-top,
+.overlay-bottom {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 30px; /* Tinggi overlay */
+    background-color: white; /* Warna putih menutupi teks */
+    z-index: 10;
+}
+
+.overlay-top {
+    top: 0; /* Menutupi bagian atas */
+}
+
+.overlay-bottom {
+    bottom: 0; /* Menutupi bagian bawah */
+}
 </style>
 
   <div class="container">
     <h5 class="text-center mb-5 mt-5">Informasi Pasar</h5>
 
-    <section class="py-5">
-      <div class="container">
+   <section class="py-5">
+    <div class="container">
         <!-- Search Bar -->
         <form action="<?= base_url('info_pasar/pencarian'); ?>" method="GET" class="mb-4">
-          <div class="search-container">
-            <input type="text" name="query" placeholder="Cari Informasi Pasar..." aria-label="Cari Informasi Pasar" 
-              class="search-input">
-            
-            <button type="submit" class="search-button">
-              Cari <i class="bi bi-search" style="margin-left: 5px;"></i>
-            </button>
-            
-            <!-- Tombol Semua -->
-            <a href="<?= base_url('info_pasar'); ?>" class="all-button">
-              Semua
-            </a>
-          </div>
+            <div class="search-container">
+                <input type="text" name="query" placeholder="Cari Informasi Pasar..." 
+                       value="<?= htmlspecialchars($query ?? '') ?>" 
+                       aria-label="Cari Tips Budidaya" class="search-input">
+                <button type="submit" class="search-button">
+                    Cari <i class="bi bi-search" style="margin-left: 5px;"></i>
+                </button>
+                <!-- Tombol Semua -->
+                <a href="<?= base_url('info_pasar'); ?>" class="all-button">Semua</a>
+            </div>
         </form>
-
-        <!-- Hasil Pencarian akan ditampilkan di sini -->
-        <div id="result"></div>
       </div>
-    </section>
+  </section>
 
     <div class="container my-4">
       <div id="carouselExampleCaptions" class="carousel-slide">
@@ -240,23 +270,36 @@ h5::after {
       </div>
       </div>
     </div>
-
-    <div class="row">
-      <?php foreach ($info_pasar as $key => $value) : ?>
-      <div class="col-md-3">
-        <a href="<?= base_url('info_pasar/artikel/' . $value['id_info_pasar']); ?>" class="text-decoration-none">
-          <div class="card mb-3 border-0 shadow">
-            <img src="<?php echo $this->config->item('url_info_pasar') . $value['gambar_info_pasar'] ?>" alt="">
-            <div class="card-body text-start">
-              <h6><?php echo $value['judul_info_pasar'] ?></h6>
-              <p><?php echo substr($value['artikel_informasi_pasar'], 0, 150); ?>...</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <?php endforeach; ?>
+    <div class="table-container text-center">
+    <iframe 
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS5AbWTIKjDlEme8ra6ml3Km31RvnK8-A6HSa50sj31DIUYGBHKnp3SiHB98k0ZE8uCfyPlxMsKize3/pubhtml?gid=1291711236&amp;single=true&amp;widget=true&amp;headers=false" 
+        class="no-scroll" 
+        scrolling="no">
+    </iframe>
+    <div class="overlay-top"></div>
+    <div class="overlay-bottom"></div>
     </div>
-  </div> 
+   <!-- Hasil Pencarian -->
+        <div class="row" id="result">
+            <?php if (isset($is_empty) && $is_empty): ?>
+                <h4 class="text-danger text-center">Artikel yang anda cari belum tersedia.</h4>
+            <?php else: ?>
+                <?php foreach ($info_pasar as $value): ?>
+                     <div class="col-md-3">
+                      <a href="<?= base_url('info_pasar/artikel/' . $value['id_info_pasar']); ?>" class="text-decoration-none">
+                        <div class="card mb-3 border-0 shadow">
+                          <img src="<?php echo $this->config->item('url_info_pasar') . $value['gambar_info_pasar'] ?>" alt="">
+                          <div class="card-body text-start">
+                            <h4><?php echo $value['judul_info_pasar'] ?></h4>
+                            <p><?php echo substr($value['artikel_informasi_pasar'], 0, 150); ?>...</p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div> 
 
 
 

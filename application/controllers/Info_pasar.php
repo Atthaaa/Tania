@@ -42,16 +42,20 @@ class Info_pasar extends CI_Controller
     // Ambil query pencarian dari input
     $query = $this->input->get('query');
 
-    // Jika query kosong, tampilkan semua layanan keuangan
+    // Jika query kosong, tampilkan semua tips budidaya
     if (empty($query)) {
         $info_pasar = $this->Minfo_pasar->tampil();
     } else {
-        // Cari layanan keuangan berdasarkan judul
+        // Cari tips budidaya berdasarkan judul
         $info_pasar = $this->Minfo_pasar->cari_info_pasar($query);
     }
 
-    // Kirim data layanan keuangan ke view
+    // Cek apakah hasil pencarian kosong
     $data['info_pasar'] = $info_pasar;
+    $data['is_empty'] = (empty($info_pasar)); // True jika hasil pencarian kosong
+    $data['query'] = $query; // Kata kunci pencarian untuk ditampilkan kembali
+
+    // Kirim data ke view
     $this->load->view('header');
     $this->load->view('info_pasar', $data);
     $this->load->view('footer');

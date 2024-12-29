@@ -53,8 +53,7 @@ class Tips_budidaya extends CI_Controller
         $this->load->view('tips_budidaya_tambah', $data); // Kirim $data ke view
         $this->load->view('footer');
     }
-
-
+    
     function hapus($id_tips_budidaya)
     {
 

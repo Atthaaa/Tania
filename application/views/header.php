@@ -21,6 +21,8 @@
       margin: 0;           /* Menghilangkan margin */
       padding: 0;          /* Menghilangkan padding */
     }
+
+    
     /* Navbar styles */
     .navbar {
       background-color: #ffffff;
@@ -337,11 +339,6 @@
           </li>
           <li class="nav-item">
             <a href="<?php echo base_url('logout') ?>" class="nav-link">Logout</a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link">
-              <a href="<?php echo base_url('welcome/edit') ?>" class="fa-regular fa-user"></a>
-            </a>
           </li>
         <?php else : ?>
           <li class="nav-item">

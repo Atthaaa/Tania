@@ -99,6 +99,25 @@ h4 {
 .text-decoration-none:hover {
     color: #2980b9;
 }
+
+.tombol {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #F0BB78; /* Warna biru */
+    color: #fff; /* Warna teks putih */
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px; /* Sudut membulat */
+    text-decoration: none; /* Menghilangkan garis bawah */
+    transition: all 0.3s ease-in-out; /* Efek transisi */
+  }
+
+  .tombol:hover {
+    background-color: #0056b3; /* Warna biru lebih gelap saat hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+    text-decoration: none; /* Tetap tanpa garis bawah */
+  }
 </style>
 <div class="container py-5">
     <h1 class="text-center mb-4"><?php echo $tips_budidaya['judul_tips_budidaya']; ?></h1>
@@ -127,4 +146,7 @@ h4 {
       <?php endforeach; ?>
     </div>
   </div>
+    <div class="text-end mt-3">
+      <a href="<?= base_url('tips_budidaya'); ?>" class="tombol">Lihat Semua</a>
+    </div>
 </div>

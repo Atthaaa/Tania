@@ -37,25 +37,30 @@ class Tips_budidaya extends CI_Controller
     }
 
   public function pencarian()
-  { 
+{ 
     $this->load->model('Mtips_budidaya');
     // Ambil query pencarian dari input
     $query = $this->input->get('query');
 
-    // Jika query kosong, tampilkan semua layanan keuangan
+    // Jika query kosong, tampilkan semua tips budidaya
     if (empty($query)) {
         $tips_budidaya = $this->Mtips_budidaya->tampil();
     } else {
-        // Cari layanan keuangan berdasarkan judul
+        // Cari tips budidaya berdasarkan judul
         $tips_budidaya = $this->Mtips_budidaya->cari_tips_budidaya($query);
     }
 
-    // Kirim data layanan keuangan ke view
+    // Cek apakah hasil pencarian kosong
     $data['tips_budidaya'] = $tips_budidaya;
+    $data['is_empty'] = (empty($tips_budidaya)); // True jika hasil pencarian kosong
+    $data['query'] = $query; // Kata kunci pencarian untuk ditampilkan kembali
+
+    // Kirim data ke view
     $this->load->view('header');
     $this->load->view('tips_budidaya', $data);
     $this->load->view('footer');
-  }
+}
+
 
   function detail($id_tips_budidaya)
     {

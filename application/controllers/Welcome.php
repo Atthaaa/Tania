@@ -9,8 +9,8 @@ class Welcome extends CI_Controller
 		$inputan = $this->input->post();
 
 		// Form validation username dan password wajib di isi
-		$this->form_validation->set_rules("Username", "Username", "required");
-		$this->form_validation->set_rules("Password", "Password", "required");
+		$this->form_validation->set_rules("Username", "username", "required");
+		$this->form_validation->set_rules("Password", "password", "required");
 
 		// atur pesan bindo
 		$this->form_validation->set_message("required", "%s wajib diisi");
@@ -45,3 +45,4 @@ class Welcome extends CI_Controller
 		$this->load->view('footer');
 	}
 }
+

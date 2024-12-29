@@ -4,72 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- External CSS -->
-    <style>
-                /* Footer styling */
-        footer {
-            background-color: #F4FFEE; /* Latar belakang hijau muda */
-            text-align: center; /* Rata tengah semua elemen */
-            padding: 30px 0; /* Lebih banyak ruang atas dan bawah */
-            font-family: 'Georgia', serif;
-        }
+<style>
+    /* Responsif untuk footer */
+    footer {
+        background-color: #F4FFEE;
+        text-align: center;
+        padding: 30px 10px; /* Sesuaikan padding untuk perangkat kecil */
+        font-family: 'Georgia', serif;
+    }
 
-        /* Logo */
+    /* Logo */
+    footer .title img {
+        max-width: 150px;
+        margin-bottom: 15px;
+    }
+
+    /* Navigasi */
+    footer .navigasi nav {
+        display: flex;
+        flex-wrap: wrap; /* Agar link turun ke baris baru jika ruang tidak cukup */
+        justify-content: center;
+    }
+
+    footer .navigasi nav a {
+        margin: 10px 15px;
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    /* Kontak */
+    footer .contact a {
+        color: #000;
+        text-decoration: none;
+        font-size: 14px;
+        margin: 10px 0;
+        display: inline-block;
+    }
+
+    /* Ikon Sosial */
+    footer .icons {
+        display: flex;
+        justify-content: center;
+        gap: 10px; /* Jarak antar ikon */
+    }
+
+    footer .icons a {
+        font-size: 18px;
+        color: #000;
+        text-decoration: none;
+    }
+
+    /* Alamat */
+    footer .address {
+        font-size: 14px;
+        margin: 10px 0;
+        color: #000;
+    }
+
+    /* Copyright */
+    footer .copyright {
+        font-size: 12px;
+        color: #666;
+        margin-top: 10px;
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
         footer .title img {
-            max-width: 200px; /* Perbesar ukuran logo */
-            margin-bottom: 25px;
+            max-width: 120px;
         }
 
-        /* Navigasi */
         footer .navigasi nav a {
-            display: inline-block;
-            margin: 0 20px; /* Tambahkan jarak antar link */
-            text-decoration: none;
-            color: #000; /* Warna teks hitam */
-            font-weight: bold;
-            font-size: 18px; /* Perbesar ukuran font */
+            font-size: 14px;
         }
 
-        footer .navigasi nav a:hover {
-            color: #4d7c0f; /* Hijau gelap saat hover */
-        }
-
-        /* Kontak */
-        footer .contact a {
-            color: #000;
-            text-decoration: none;
-            font-size: 16px; /* Perbesar ukuran font */
-            margin: 10px 0;
-            display: block;
-        }
-
-        /* Icon Sosial Media */
-        footer .icons a {
-            margin: 0 15px; /* Tambahkan jarak antar ikon */
-            font-size: 22px; /* Perbesar ikon */
-            color: #000; /* Warna hitam */
-            text-decoration: none;
-        }
-
-        footer .icons a:hover {
-            color: #4d7c0f; /* Warna hijau gelap */
-        }
-
-        /* Alamat */
+        footer .contact a,
         footer .address {
-            font-size: 16px; /* Perbesar ukuran font */
-            margin: 15px 0;
-            color: #000;
+            font-size: 12px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        footer .navigasi nav a {
+            margin: 5px 10px;
+            font-size: 12px;
         }
 
-        /* Copyright */
-        footer .copyright {
-            font-size: 14px; /* Perbesar ukuran font */
-            color: #666; /* Warna abu-abu */
-            margin-top: 15px;
+        footer .contact a,
+        footer .address {
+            font-size: 10px;
         }
+    }
+</style>
 
-        
-    </style>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -80,6 +109,8 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="f1b19cdf-22d4-4caf-972b-d84cda3de777";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 </head>
 <body>
 <footer>

@@ -36,7 +36,7 @@
             <a href="<?php echo base_url('Konsultasi') ?>" class="nav-link" style="color: black;">Konsultasi</a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo base_url('Pengguna') ?>" class="nav-link" style="color: black;">Member</a>
+            <a href="<?php echo base_url('Pengguna') ?>" class="nav-link" style="color: black;">Pengguna</a>
           </li>
         </ul>
         <?php if ($this->session->userdata('id_admin')) : ?>

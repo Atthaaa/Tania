@@ -103,7 +103,6 @@
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   justify-content: center;
-  margin-top: 50px;
 }
 
 .card:hover {
@@ -183,7 +182,7 @@ h5::after {
 }
 
 .row {
-  margin-top: 20px; /* Menurunkan posisi row sebesar 20px */
+  margin-top: 10px; /* Menurunkan posisi row sebesar 20px */
   margin-bottom: 60px;
 }
 </style>
@@ -191,29 +190,23 @@ h5::after {
   <div class="container">
     <h5 class="text-center mb-5 mt-5">Tips Budidaya</h5>
 
-    <section class="py-5">
-      <div class="container">
+   <section class="py-5">
+    <div class="container">
         <!-- Search Bar -->
         <form action="<?= base_url('tips_budidaya/pencarian'); ?>" method="GET" class="mb-4">
-          <div class="search-container">
-            <input type="text" name="query" placeholder="Cari Tips Budidaya..." aria-label="Cari Tips Budidaya" 
-              class="search-input">
-            
-            <button type="submit" class="search-button">
-              Cari <i class="bi bi-search" style="margin-left: 5px;"></i>
-            </button>
-            
-            <!-- Tombol Semua -->
-            <a href="<?= base_url('tips_budidaya'); ?>" class="all-button">
-              Semua
-            </a>
-          </div>
+            <div class="search-container">
+                <input type="text" name="query" placeholder="Cari Tips Budidaya..." 
+                       value="<?= htmlspecialchars($query ?? '') ?>" 
+                       aria-label="Cari Tips Budidaya" class="search-input">
+                <button type="submit" class="search-button">
+                    Cari <i class="bi bi-search" style="margin-left: 5px;"></i>
+                </button>
+                <!-- Tombol Semua -->
+                <a href="<?= base_url('tips_budidaya'); ?>" class="all-button">Semua</a>
+            </div>
         </form>
-
-        <!-- Hasil Pencarian akan ditampilkan di sini -->
-        <div id="result"></div>
       </div>
-    </section>
+  </section>
 
     <div class="container my-4">
       <div id="carouselExampleCaptions" class="carousel-slide">
@@ -243,22 +236,34 @@ h5::after {
 
     <div class="row">
       <?php foreach ($tips_budidaya as $key => $value) : ?>
-      <div class="col-md-3">
-        <a href="<?= base_url('tips_budidaya/artikel/' . $value['id_tips_budidaya']); ?>" class="text-decoration-none">
-          <div class="card mb-3 border-0 shadow">
-            <img src="<?php echo $this->config->item('url_tips_budidaya') . $value['gambar_tips_budidaya'] ?>" alt="">
-            <div class="card-body text-start">
-              <h4><?php echo $value['judul_tips_budidaya'] ?></h4>
-              <p><?php echo substr($value['artikel_tips_budidaya'], 0, 150); ?>...</p>
-            </div>
-          </div>
-        </a>
-      </div>
+      
       <?php endforeach; ?>
     </div>
-  </div> 
 
 
+   <!-- Hasil Pencarian -->
+        <div class="row" id="result">
+            <?php if (isset($is_empty) && $is_empty): ?>
+                <h4 class="text-danger text-center">Artikel yang anda cari belum tersedia.</h4>
+            <?php else: ?>
+                <?php foreach ($tips_budidaya as $value): ?>
+                     <div class="col-md-3">
+                      <a href="<?= base_url('tips_budidaya/artikel/' . $value['id_tips_budidaya']); ?>" class="text-decoration-none">
+                        <div class="card mb-3 border-0 shadow">
+                          <img src="<?php echo $this->config->item('url_tips_budidaya') . $value['gambar_tips_budidaya'] ?>" alt="">
+                          <div class="card-body text-start">
+                            <h4><?php echo $value['judul_tips_budidaya'] ?></h4>
+                            <p><?php echo substr($value['artikel_tips_budidaya'], 0, 150); ?>...</p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div> 
+
+     
 
 
 

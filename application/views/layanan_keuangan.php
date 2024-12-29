@@ -193,28 +193,22 @@ h5::after {
     <h5 class="text-center mb-5 mt-5">Layanan Keuangan</h5>
 
     <section class="py-5">
-      <div class="container">
+    <div class="container">
         <!-- Search Bar -->
         <form action="<?= base_url('layanan_keuangan/pencarian'); ?>" method="GET" class="mb-4">
-          <div class="search-container">
-            <input type="text" name="query" placeholder="Cari Layanan Keuangan..." aria-label="Cari Layanan Keuangan" 
-              class="search-input">
-            
-            <button type="submit" class="search-button">
-              Cari <i class="bi bi-search" style="margin-left: 5px;"></i>
-            </button>
-            
-            <!-- Tombol Semua -->
-            <a href="<?= base_url('layanan_keuangan'); ?>" class="all-button">
-              Semua
-            </a>
-          </div>
+            <div class="search-container">
+                <input type="text" name="query" placeholder="Cari Layanan Keuangan..." 
+                       value="<?= htmlspecialchars($query ?? '') ?>" 
+                       aria-label="Cari Tips Budidaya" class="search-input">
+                <button type="submit" class="search-button">
+                    Cari <i class="bi bi-search" style="margin-left: 5px;"></i>
+                </button>
+                <!-- Tombol Semua -->
+                <a href="<?= base_url('layanan_keuangan'); ?>" class="all-button">Semua</a>
+            </div>
         </form>
-
-        <!-- Hasil Pencarian akan ditampilkan di sini -->
-        <div id="result"></div>
       </div>
-    </section>
+  </section>
 
     <div class="container my-4">
       <div id="carouselExampleCaptions" class="carousel-slide">
@@ -242,22 +236,28 @@ h5::after {
       </div>
     </div>
 
-    <div class="row">
-      <?php foreach ($layanan_keuangan as $key => $value) : ?>
-      <div class="col-md-3">
-        <a href="<?= base_url('layanan_keuangan/artikel/' . $value['id_layanan_keuangan']); ?>" class="text-decoration-none">
-          <div class="card mb-3 border-0 shadow">
-            <img src="<?php echo $this->config->item('url_layanan_keuangan') . $value['gambar_layanan_keuangan'] ?>" alt="">
-            <div class="card-body text-start">
-              <h6><?php echo $value['judul_layanan_keuangan'] ?></h6>
-              <p><?php echo substr($value['artikel_layanan_keuangan'], 0, 150); ?>...</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <?php endforeach; ?>
-    </div>
-  </div> 
+    <!-- Hasil Pencarian -->
+        <div class="row" id="result">
+            <?php if (isset($is_empty) && $is_empty): ?>
+              <h4 class="text-danger text-center">Artikel yang anda cari belum tersedia.</h4>
+            <?php else: ?>
+                <?php foreach ($layanan_keuangan as $value): ?>
+                     <div class="col-md-3">
+                      <a href="<?= base_url('layanan_keuangan/artikel/' . $value['id_layanan_keuangan']); ?>" class="text-decoration-none">
+                        <div class="card mb-3 border-0 shadow">
+                          <img src="<?php echo $this->config->item('url_layanan_keuangan') . $value['gambar_layanan_keuangan'] ?>" alt="">
+                          <div class="card-body text-start">
+                            <h4><?php echo $value['judul_layanan_keuangan'] ?></h4>
+                            <p><?php echo substr($value['artikel_layanan_keuangan'], 0, 150); ?>...</p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div> 
+
 
 
 

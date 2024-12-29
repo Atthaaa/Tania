@@ -8,7 +8,7 @@
     color: white; 
     cursor: pointer; 
     transition: all 0.3s ease;">
-    <a href="https://app.crisp.chat/settings/website/46b4492f-7635-49f2-968b-31af922d427d/status/reporter/" 
+    <a href="https://app.crisp.chat/website/f1b19cdf-22d4-4caf-972b-d84cda3de777/inbox/" 
        style="text-decoration: none; color: white;">
       Kelola Chat
     </a>

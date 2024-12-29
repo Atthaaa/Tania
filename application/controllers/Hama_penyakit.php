@@ -36,22 +36,26 @@ class Hama_penyakit extends CI_Controller
     $this->load->view('footer');
     }
 
-    function pencarian()
-    { 
+    public function pencarian()
+  { 
     $this->load->model('Mhama_penyakit');
     // Ambil query pencarian dari input
     $query = $this->input->get('query');
 
-    // Jika query kosong, tampilkan semua layanan keuangan
+    // Jika query kosong, tampilkan semua tips budidaya
     if (empty($query)) {
         $hama_penyakit = $this->Mhama_penyakit->tampil();
     } else {
-        // Cari layanan keuangan berdasarkan judul
+        // Cari tips budidaya berdasarkan judul
         $hama_penyakit = $this->Mhama_penyakit->cari_hama_penyakit($query);
     }
 
-    // Kirim data layanan keuangan ke view
+    // Cek apakah hasil pencarian kosong
     $data['hama_penyakit'] = $hama_penyakit;
+    $data['is_empty'] = (empty($hama_penyakit)); // True jika hasil pencarian kosong
+    $data['query'] = $query; // Kata kunci pencarian untuk ditampilkan kembali
+
+    // Kirim data ke view
     $this->load->view('header');
     $this->load->view('hama_penyakit', $data);
     $this->load->view('footer');
