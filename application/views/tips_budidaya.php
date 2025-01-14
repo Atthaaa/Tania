@@ -103,6 +103,7 @@
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   justify-content: center;
+  margin-top: 50px;
 }
 
 .card:hover {

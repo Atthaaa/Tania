@@ -41,7 +41,6 @@ class Mpengguna extends CI_Model
       $this->session->set_userdata('Nama', $cekmember['Nama']);
       $this->session->set_userdata('Password', $cekmember['Password']);
       $this->session->set_userdata('No_HP', $cekmember['No_HP']);
-      $this->session->set_userdata('Jenis_kelamin', $cekmember['Jenis_kelamin']);
       return "ada";
     } else {
       return "gak ada";

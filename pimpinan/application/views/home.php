@@ -1,9 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+</head>
 <body>
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/modules/exporting.js"></script>
-  <script src="https://code.highcharts.com/modules/export-data.js"></script>
-  <div class="container">
-    <div id="container">
+    <?php 
+    // Periksa apakah sesi id_pimpinan ada
+    if ($this->session->userdata('id_pimpinan')) {
+    ?>
+    <div class="container text-center">
+        <div id="container"></div>
         <script>
             (function (H) {
                 H.seriesTypes.pie.prototype.animate = function (init) {
@@ -110,10 +121,10 @@
                 exporting: {
                     buttons: {
                         contextButton: {
-                            align: 'center', // Posisi horizontal (left, center, right)
-                            verticalAlign: 'top', // Posisi vertikal (top, middle, bottom)
-                            x: 300, // Offset horizontal
-                            y: -10, // Offset vertikal
+                            align: 'center',
+                            verticalAlign: 'top',
+                            x: 300,
+                            y: -10,
                             menuItems: [
                                 'downloadPNG',
                                 'downloadJPEG',
@@ -142,7 +153,9 @@
             });
         </script>
     </div>
-</div>
-
-  
+    <?php 
+    } else {
+    }
+    ?>
 </body>
+</html>

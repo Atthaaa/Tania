@@ -3,6 +3,31 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Mpimpinan extends CI_Model
 {
+    function login($inputan)
+  {
+    $username = $inputan['username'];
+    $password = $inputan['password'];
+    $password = sha1($password);
+
+    // cek ke database
+    $this->db->where('username', $username);
+    $this->db->where('password', $password);
+    $q = $this->db->get('pimpinan');
+    $cekmember = $q->row_array();
+
+    // jika tidak kosong maka ada
+    if (!empty($cekmember)) {
+      // Membuat tiket bisokop yang dipake selama keliling aplikasi
+      $this->session->set_userdata('id_pimpinan', $cekmember['id_pimpinan']);
+      $this->session->set_userdata('username', $cekmember['username']);
+      $this->session->set_userdata('password', $cekmember['password']);
+      return "ada";
+    } else {
+      return "gak ada";
+    }
+  }
+
+
     function tampil()
     {
         $q = $this->db->get('pengguna');
